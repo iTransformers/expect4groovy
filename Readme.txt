@@ -2,8 +2,10 @@ This is the first version of the expect4groovy library.
 
 Dependencies
 ==================================================
-Expect4j runtime depends on the following other libraries.
+expect4groovy runtime depends on the following other libraries.
 - Maven: com:expect4j:1.0
+  Project Home: https://code.google.com/p/expect4j/
+  https://expect4j.googlecode.com/files/expect4j-1.0.jar
 - Maven: org.codehaus.groovy:groovy-all:2.1.9
 - Maven: oro:oro:2.0.8
 - Maven: com.jcraft:jsch:0.1.44-1 (optional for ssh connections)
@@ -84,11 +86,19 @@ This object has the following most important methods:
 - shouldResetTimer()
 etc. (See expect4j documentation for more details)
 
-This is done with one of the following overloads of createBindings method:
+-------------------------------------------------------------
+The above Groovy closures are registered into script bindings with one of the following overloads
+of createBindings method:
 
 void Expect4Groovy.createBindings(CLIConnection cliConnection, Binding binding, boolean withLogging);
 Map<String, Object> Expect4Groovy.createBindings(CLIConnection cliConnection);
 Map<String, Object> Expect4Groovy.createBindings(InputStream is, OutputStream os);
+
+Example:
+CLIConnection conn = new RawSocketCLIConnection()
+conn.connect(["user":"vasko","password":"123","address":"localhost:23"])
+Expect4Groovy.createBindings(conn, getBinding(), true)
+
 
 Running example
 ===================================================
