@@ -96,7 +96,7 @@ Map<String, Object> Expect4Groovy.createBindings(InputStream is, OutputStream os
 
 Example:
 CLIConnection conn = new RawSocketCLIConnection()
-conn.connect(["user":"vasko","password":"123","address":"localhost:23"])
+conn.connect(["user":"v","password":"123","address":"localhost:23"])
 Expect4Groovy.createBindings(conn, getBinding(), true)
 
 

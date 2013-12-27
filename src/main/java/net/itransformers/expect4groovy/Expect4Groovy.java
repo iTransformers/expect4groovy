@@ -14,13 +14,6 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * User: VasilYordanov
- * Date: 11/10/13
- * Time: 9:14 PM
- * To change this template use File | Settings | File Templates.
- */
 public class Expect4Groovy {
     public static void createBindings(CLIConnection cliConnection, Binding binding, boolean withLogging){
         InputStream is = cliConnection.inputStream();
