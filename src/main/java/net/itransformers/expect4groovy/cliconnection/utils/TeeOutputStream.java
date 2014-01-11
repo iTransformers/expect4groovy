@@ -1,9 +1,10 @@
 package net.itransformers.expect4groovy.cliconnection.utils;
 
+import org.apache.log4j.Logger;
+
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.logging.Logger;
 
 public class TeeOutputStream extends FilterOutputStream {
     Logger logger = Logger.getLogger(TeeOutputStream.class.getName());
@@ -36,4 +37,5 @@ public class TeeOutputStream extends FilterOutputStream {
         super.write(b);
         branch.write(b);
     }
+
 }

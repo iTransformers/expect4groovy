@@ -1,9 +1,10 @@
 package net.itransformers.expect4groovy.cliconnection.utils;
 
+import org.apache.log4j.Logger;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.logging.Logger;
 
 public class OutputStreamCLILogger extends OutputStream {
     Logger logger = Logger.getLogger(OutputStreamCLILogger.class.getName());
@@ -21,7 +22,51 @@ public class OutputStreamCLILogger extends OutputStream {
     }
 
     @Override
+    public void write(byte[] bytes) throws IOException {
+        super.write(bytes);    //To change body of overridden methods use File | Settings | File Templates.
+        if (isOutputLogging) {
+            logger.info("<<< " + os.toString());
+        } else {
+            logger.info(">>> " + os.toString());
+        }
+        os.reset();
+    }
+
+    @Override
+    public void write(byte[] b, int off, int len) throws IOException {
+        if (b == null) {
+            throw new NullPointerException();
+        } else if ((off < 0) || (off > b.length) || (len < 0) ||
+                ((off + len) > b.length) || ((off + len) < 0)) {
+            throw new IndexOutOfBoundsException();
+        } else if (len == 0) {
+            return;
+        }
+        for (int i = 0 ; i < len ; i++) {
+            doWrite(b[off + i]);
+        }
+
+        doFlush();
+    }
+
+    @Override
     public void write(int b) throws IOException {
+        doWrite(b);
+        if (b == '\r'){
+            doFlush();
+        }
+    }
+
+    private void doFlush(){
+        if (isOutputLogging) {
+            logger.info("<<< " + os.toString());
+        } else {
+            logger.info(">>> " + os.toString());
+        }
+        os.reset();
+    }
+
+    private void doWrite(int b) throws IOException {
         if (b < 32){ // non printable characters
             switch (b) {
                 case 0x0D : os.write(("[\\r]").getBytes()); break;
@@ -34,14 +79,6 @@ public class OutputStreamCLILogger extends OutputStream {
             }
         } else { // printable characters
             os.write(b);
-        }
-        if (b == '\r') {
-            if (isOutputLogging) {
-                logger.info("<<< " + os.toString());
-            } else {
-                logger.info(">>> " + os.toString());
-            }
-            os.reset();
         }
     }
 }

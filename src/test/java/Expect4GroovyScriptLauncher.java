@@ -24,7 +24,8 @@ public class Expect4GroovyScriptLauncher {
         params.put("port","23");
         params.put("command","no ip domain-lookup");
 
-        Map<String, String> result = new Expect4GroovyScriptLauncher().launch(new String[]{"src/test/java/"}, "expect4groovy_test.groovy", params);
+        Expect4GroovyScriptLauncher launcher = new Expect4GroovyScriptLauncher();
+        Map<String, String> result = launcher.launch(new String[]{"src/test/java/"}, "expect4groovy_test.groovy", params);
 
         System.out.println("Status: "+ result.get("status"));
         System.out.println("Data"+ result.get("data"));
