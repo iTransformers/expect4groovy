@@ -29,7 +29,23 @@
             <artifactId>groovy-all</artifactId>
             <version>2.1.9</version>
         </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wittams.gritty</groupId>
+            <artifactId>gritty</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.0.1</version>
+        </dependency>
     </dependencies>
+
     <repositories>
         <!-- tcljava is provided by SpringSource -->
         <repository>
