@@ -175,5 +175,3 @@ def sendConfigCommand() {
 
 send "exit" + defaultTerminator
 expect eof()
-
-conn.disconnect()

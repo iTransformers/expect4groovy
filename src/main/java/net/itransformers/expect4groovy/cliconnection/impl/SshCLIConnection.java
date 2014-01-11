@@ -17,6 +17,7 @@ public class SshCLIConnection implements CLIConnection {
     private ChannelShell channel;
     private InputStream inputStream;
     private OutputStream outputStream;
+    private Session session;
 
     public void connect(Map<String, String> params) throws IOException {
         String address = params.get("address");
@@ -44,7 +45,7 @@ public class SshCLIConnection implements CLIConnection {
             timeout = Integer.parseInt(timeoutStr);
         }
         JSch jsch = new JSch();
-        Session session = null;
+
         Hashtable<String,String> config = new Hashtable<String,String>();
         config.put("StrictHostKeyChecking", "no");
         try {
@@ -72,6 +73,7 @@ public class SshCLIConnection implements CLIConnection {
 
     public void disconnect() throws IOException {
         channel.disconnect();
+        session.disconnect();
     }
 
 }

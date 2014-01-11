@@ -16,20 +16,22 @@ public class Expect4GroovyScriptLauncher {
 
     public static void main(String[] args) throws IOException, ResourceException, ScriptException {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("protocol","telnet");
-        params.put("username","misho");
-        params.put("password","misho321");
-        params.put("enablePass","misho321");
+        params.put("protocol","ssh");
+        params.put("username","vvv");
+        params.put("password","test");
+        params.put("enablePass","test");
         params.put("address","localhost");
-        params.put("port","23");
+        params.put("port","22");
         params.put("command","no ip domain-lookup");
 
         Expect4GroovyScriptLauncher launcher = new Expect4GroovyScriptLauncher();
-        Map<String, String> result = launcher.launch(new String[]{"src/test/java/"}, "expect4groovy_test.groovy", params);
-
-        System.out.println("Status: "+ result.get("status"));
-        System.out.println("Data"+ result.get("data"));
-
+        Map<String, String> result = launcher.launch(new String[]{"src/test/java/"}, "ssh_expect4j.groovy", params);
+        if (result != null) {
+            Map<String, String> mapResult = (Map<String, String>) result;
+            System.out.println("Status: "+ mapResult.get("status"));
+            System.out.println("Data"+ mapResult.get("data"));
+        }
+        System.out.println("--------");
     }
 
     private Map<String,String> launch(String[] roots, String scriptName, Map<String, String> params) throws IOException, ResourceException, ScriptException {
@@ -40,8 +42,12 @@ public class Expect4GroovyScriptLauncher {
             Expect4Groovy.createBindings(conn, binding, true);
             binding.setProperty("params", params);
             GroovyScriptEngine gse = new GroovyScriptEngine(roots);
-            Map<String, String> result = (Map<String, String>) gse.run(scriptName, binding);
-            return result;
+            Object result = gse.run(scriptName, binding);
+            if (result instanceof Map) {
+                return (Map)result;
+            } else {
+                return null;
+            }
         } finally {
             conn.disconnect();
         }
