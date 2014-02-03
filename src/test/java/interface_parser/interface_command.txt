@@ -1,0 +1,58 @@
+interface Loopback0
+ ip address 192.168.3.3 255.255.255.255
+!
+interface Ethernet0/0
+ no ip address
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ shutdown
+ no mop enabled
+!
+interface Ethernet0/1
+ no ip address
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ shutdown
+ no mop enabled
+!
+interface Ethernet0/2
+ no ip address
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ shutdown
+ no mop enabled
+!
+interface Ethernet0/3
+ no ip address
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ shutdown
+ no mop enabled
+!
+interface Serial1/0
+ ip address 172.16.35.3 255.255.255.248
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ no fair-queue
+ serial restart-delay 0
+!
+interface Serial1/1
+ ip address 172.16.13.3 255.255.255.248
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ serial restart-delay 0
+!
+interface Serial1/2
+ ip address 172.16.23.3 255.255.255.248
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ serial restart-delay 0
+!
+R3#

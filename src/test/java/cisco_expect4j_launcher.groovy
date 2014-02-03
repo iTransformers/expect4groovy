@@ -4,7 +4,7 @@ import net.itransformers.expect4groovy.cliconnection.impl.TelnetCLIConnection
 import net.itransformers.expect4groovy.cliconnection.impl.RawSocketCLIConnection
 import net.itransformers.expect4groovy.cliconnection.impl.SshCLIConnection
 
-params = ["protocol":"telnet", "username": "test", "password": "test321", "enablePass": "test321", "address": "87.247.249.134","port":"23", "command": "no ip domain-lookup"]
+params = ["protocol":"ssh", "username": "lab", "password": "lab123", "enablePass": "pass123", "address": "172.16.35.5","port":"22", "command": "no ip domain-lookup"]
 
 CLIConnection conn = null
 if (params["protocol"]=="telnet"){

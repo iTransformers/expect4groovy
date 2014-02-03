@@ -23,21 +23,16 @@ public class SshCLIConnection implements CLIConnection {
         if (address == null) {
             throw new RuntimeException("Missing parameter: address");
         }
-        int colIndex = address.indexOf(":");
-        if (colIndex == -1) {
-            throw new RuntimeException("Invalid format of address parameter: "+address);
-        }
-        String host = address.substring(0, colIndex);
-        String portStr = address.substring(colIndex+1);
+        String portStr = params.get("port");
         int port;
         try {
             port = Integer.parseInt(portStr);
         } catch (NumberFormatException nfe){
             throw new RuntimeException("invalid format of port in address parameter: "+ address);
         }
-        String user1 = params.get("user");
+        String user1 = params.get("username");
         if (user1 == null) {
-            throw new RuntimeException("Missing parameter: user");
+            throw new RuntimeException("Missing parameter: username");
         }
         String password1 = params.get("password");
         if (password1 == null) {
@@ -53,7 +48,7 @@ public class SshCLIConnection implements CLIConnection {
         Hashtable<String,String> config = new Hashtable<String,String>();
         config.put("StrictHostKeyChecking", "no");
         try {
-            session = jsch.getSession(user1, host, port);
+            session = jsch.getSession(user1, address, port);
             session.setPassword(password1);
             session.setConfig(config);
             session.connect(timeout);
@@ -76,7 +71,7 @@ public class SshCLIConnection implements CLIConnection {
     }
 
     public void disconnect() throws IOException {
-        channel.disconnect();
+        if (channel != null) channel.disconnect();
     }
 
 }

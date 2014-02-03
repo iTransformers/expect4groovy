@@ -51,7 +51,9 @@ public class RawSocketCLIConnection implements CLIConnection {
     }
 
     public void disconnect() throws IOException {
-        socket.close();
+        if (socket!=null){
+            socket.close();
+        }
     }
 
 }

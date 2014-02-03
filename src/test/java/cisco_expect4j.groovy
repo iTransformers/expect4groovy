@@ -4,7 +4,7 @@ import net.itransformers.expect4groovy.cliconnection.impl.TelnetCLIConnection
 import net.itransformers.expect4groovy.cliconnection.impl.RawSocketCLIConnection
 import net.itransformers.expect4groovy.cliconnection.impl.SshCLIConnection
 
-params = ["protocol":"telnet", "username": "test", "password": "test321", "enablePass": "test321", "address": "87.247.249.134","port":"23", "command": "no ip domain-lookup"]
+params = ["protocol":"telnet", "username": "lab", "password": "lab123", "enablePass": "lab123", "address": "10.17.1.13","port":"23", "command": "no ip domain-lookup"]
 
 CLIConnection conn = null
 if (params["protocol"]=="telnet"){
@@ -90,11 +90,14 @@ def password() {
 def showPrivilege() {
     def returnFlag = 2
     send "show privilege"+defaultTerminator
-    expect("Current privilege level is 15") {
-        returnFlag = status["success"]
-    }
-    if(returnFlag != status["success"]){
-        enablePassword()
+    expect _re("Current privilege level is (\\d)+") {
+        if (it.getMatch(1)=="15"){
+            returnFlag = status["success"]
+
+        }  else {
+            returnFlag = status["failure"]
+
+        }
     }
 
     return  returnFlag

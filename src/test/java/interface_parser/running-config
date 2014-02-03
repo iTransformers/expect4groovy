@@ -1,0 +1,210 @@
+
+Building configuration...
+
+Current configuration : 3794 bytes
+!
+version 12.4
+no service pad
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service password-encryption
+service sequence-numbers
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+security authentication failure rate 10 log
+security passwords min-length 6
+logging console critical
+enable secret 5 $1$0UY6$scQh0zjoLNRb4VznJ6FKR1
+!
+aaa new-model
+!
+!
+aaa authentication login local_auth local
+!
+!
+!
+!
+!
+aaa session-id common
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+no ip source-route
+no ip gratuitous-arps
+!
+!
+!
+!
+ip cef
+no ip bootp server
+ip domain name nbu.bg
+ip inspect audit-trail
+ip inspect udp idle-time 1800
+ip inspect dns-timeout 7
+ip inspect tcp idle-time 14400
+ip inspect name autosec_inspect cuseeme timeout 3600
+ip inspect name autosec_inspect ftp timeout 3600
+ip inspect name autosec_inspect http timeout 3600
+ip inspect name autosec_inspect rcmd timeout 3600
+ip inspect name autosec_inspect realaudio timeout 3600
+ip inspect name autosec_inspect smtp timeout 3600
+ip inspect name autosec_inspect tftp timeout 30
+ip inspect name autosec_inspect udp timeout 15
+ip inspect name autosec_inspect tcp timeout 3600
+login block-for 1 attempts 3 within 3
+no ipv6 traffic interface-statistics
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+archive
+ log config
+  logging enable
+username lab password 7 1042081B544541
+!
+redundancy
+!
+!
+!
+!
+!
+ip finger
+ip ssh time-out 60
+ip ssh authentication-retries 2
+ip ssh version 2
+!
+!
+!
+!
+interface Loopback0
+ ip address 192.168.3.3 255.255.255.255
+!
+interface Ethernet0/0
+ no ip address
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ shutdown
+ no mop enabled
+!
+interface Ethernet0/1
+ no ip address
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ shutdown
+ no mop enabled
+!
+interface Ethernet0/2
+ no ip address
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ shutdown
+ no mop enabled
+!
+interface Ethernet0/3
+ no ip address
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ shutdown
+ no mop enabled
+!
+interface Serial1/0
+ ip address 172.16.35.3 255.255.255.248
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ no fair-queue
+ serial restart-delay 0
+!
+interface Serial1/1
+ ip address 172.16.13.3 255.255.255.248
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ serial restart-delay 0
+!
+interface Serial1/2
+ ip address 172.16.23.3 255.255.255.248
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ serial restart-delay 0
+!
+interface Serial1/3
+ ip address 172.16.34.3 255.255.255.248
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ serial restart-delay 0
+!
+router ospf 100
+ router-id 192.168.3.3
+ log-adjacency-changes
+ network 172.16.13.0 0.0.0.7 area 0
+ network 172.16.23.0 0.0.0.7 area 0
+ network 172.16.34.0 0.0.0.7 area 0
+ network 172.16.35.0 0.0.0.7 area 0
+ network 192.168.3.3 0.0.0.0 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ip access-list extended autosec_firewall_acl
+ permit udp any any eq bootpc
+ deny   ip any any
+!
+logging trap debugging
+logging facility local2
+access-list 100 permit udp any any eq bootpc
+no cdp run
+
+!
+!
+!
+!
+snmp-server community netTransformer-rw RW
+snmp-server community netTransformer-r RO
+!
+!
+control-plane
+!
+banner motd ^CHere is a sample Security Banner to be shown
+at every access to device. Modify it to suit your
+enterprise requirements.^C
+!
+line con 0
+ exec-timeout 5 0
+ logging synchronous
+ login authentication local_auth
+ transport output telnet
+line aux 0
+ login authentication local_auth
+ transport output telnet
+line vty 0 4
+ login authentication local_auth
+ transport input telnet ssh
+!
+exception data-corruption buffer truncate
+end
+
+R3#
