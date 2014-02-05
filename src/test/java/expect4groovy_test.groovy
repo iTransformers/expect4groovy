@@ -1,16 +1,7 @@
-import net.itransformers.expect4groovy.Expect4Groovy
-import net.itransformers.expect4groovy.cliconnection.CLIConnection
-import net.itransformers.expect4groovy.cliconnection.impl.RawSocketCLIConnection
-
-CLIConnection conn = new RawSocketCLIConnection()
-conn.connect(["user":"v","password":"123","address":"localhost:23"])
-
-Expect4Groovy.createBindings(conn, getBinding(), true)
-
 def prompt = "#"
 
 expect "user>"
-send "v\r"
+send "vasko\r"
 
 expect "password>"
 send "123\r"
@@ -36,4 +27,4 @@ expect ([
 send "exit\r"
 expect eof()
 
-conn.disconnect()
+return ["status": "SUCCESS","data": "Hello"]

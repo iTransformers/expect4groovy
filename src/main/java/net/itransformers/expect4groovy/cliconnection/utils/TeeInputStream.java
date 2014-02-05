@@ -1,7 +1,11 @@
 package net.itransformers.expect4groovy.cliconnection.utils;
 
-import java.io.*;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
+
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class TeeInputStream extends FilterInputStream {
 
