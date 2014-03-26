@@ -9,11 +9,11 @@
     <version>1.1-SNAPSHOT</version>
 
     <dependencies>
-        <dependency>
-            <groupId>com</groupId>
-            <artifactId>expect4j</artifactId>
-            <version>1.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com</groupId>-->
+            <!--<artifactId>expect4j</artifactId>-->
+            <!--<version>1.0</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>oro</groupId>
             <artifactId>oro</artifactId>
@@ -44,6 +44,18 @@
             <artifactId>commons-net</artifactId>
             <version>3.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.1.1</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <repositories>

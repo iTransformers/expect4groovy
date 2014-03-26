@@ -1,7 +1,7 @@
 def prompt = "#"
 
 expect "user>"
-send "vasko\r"
+send "vvv\r"
 
 expect "password>"
 send "123\r"

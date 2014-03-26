@@ -1,18 +1,20 @@
 package net.itransformers.expect4groovy.expect4jwrapper;
 
-import expect4j.Expect4j;
-import expect4j.ExpectState;
-import expect4j.matches.*;
-import expect4j.matches.GlobMatch;
-import groovy.lang.Closure;
+
+import net.itransformers.expect4java.Closure;
+import net.itransformers.expect4java.Expect4j;
+import net.itransformers.expect4java.ExpectContext;
+import net.itransformers.expect4java.matches.GlobMatch;
+import net.itransformers.expect4java.matches.Match;
+import net.itransformers.expect4java.matches.TimeoutMatch;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpectClosure extends Closure {
+public class ExpectClosure extends groovy.lang.Closure {
 
     private Expect4j expect4j;
-    private expect4j.matches.TimeoutMatch defaultTimeoutMatch;
+    private TimeoutMatch defaultTimeoutMatch;
 
     public ExpectClosure(Object owner, Object thisObject, Expect4j expect4j) {
         super(owner, thisObject);
@@ -34,7 +36,7 @@ public class ExpectClosure extends Closure {
     public Object call(Object... args) {
         if ((args.length == 1) && (args[0] instanceof String)) {
             try {
-                return expect4j.expect((String) args[0]);
+                return expect4j.expect(new Match[]{new GlobMatch((String) args[0], null)});
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -44,28 +46,28 @@ public class ExpectClosure extends Closure {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-        } else if ((args.length == 2) && (args[0] instanceof String) && (args[1] instanceof Closure)){
+        } else if ((args.length == 2) && (args[0] instanceof String) && (args[1] instanceof groovy.lang.Closure)){
             try {
-                final Closure closure = (Closure) args[1];
-                return expect4j.expect((String) args[0], new expect4j.Closure() {
+                final groovy.lang.Closure closure = (groovy.lang.Closure) args[1];
+                return expect4j.expect(new Match[]{new GlobMatch((String) args[0], new Closure() {
                     @Override
-                    public void run(ExpectState expectState) throws Exception {
+                    public void run(ExpectContext expectState) throws Exception {
                         closure.call(expectState);
                     }
-                });
+                })});
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         } else if ((args.length == 1) && args[0] instanceof List){
             List list = (List) args[0];
-            List<expect4j.matches.Match> matchesList = new ArrayList<expect4j.matches.Match>(list.size()+1);
+            List<Match> matchesList = new ArrayList<Match>(list.size()+1);
             boolean hasTimeoutMatch = false;
             for (Object element : list) {
                 if (element instanceof String) {
                     try {
-                        matchesList.add(new GlobMatch((String) element, new expect4j.Closure() {
+                        matchesList.add(new GlobMatch((String) element, new Closure() {
                             @Override
-                            public void run(ExpectState expectState) throws Exception {
+                            public void run(ExpectContext expectState) throws Exception {
                                 // Do nothing
                             }
                         }));
@@ -85,7 +87,7 @@ public class ExpectClosure extends Closure {
                 matchesList.add(defaultTimeoutMatch);
             }
             try {
-                return expect4j.expect(matchesList);
+                return expect4j.expect(matchesList.toArray(new Match[matchesList.size()]));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -95,6 +97,6 @@ public class ExpectClosure extends Closure {
     }
 
     public void setDefaultTimeoutMatch(Object defaultTimeoutMatch){
-        this.defaultTimeoutMatch = (expect4j.matches.TimeoutMatch)defaultTimeoutMatch;
+        this.defaultTimeoutMatch = (TimeoutMatch)defaultTimeoutMatch;
     }
 }

@@ -1,7 +1,7 @@
 package net.itransformers.expect4groovy.expect4jwrapper;
 
-import expect4j.Expect4j;
 import groovy.lang.Closure;
+import net.itransformers.expect4java.Expect4j;
 
 import java.io.IOException;
 

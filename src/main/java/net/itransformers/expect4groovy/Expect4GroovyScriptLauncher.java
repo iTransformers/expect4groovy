@@ -16,24 +16,24 @@ import java.util.Map;
 
 public class Expect4GroovyScriptLauncher {
 
-    public static void main(String[] args) throws IOException, ResourceException, ScriptException {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("protocol","telnet");
-        params.put("username","lab");
-        params.put("password","pass123");
-        params.put("enablePass","pass123");
-        params.put("address","10.17.1.51");
-        params.put("port","2021");
-        params.put("command","no ip domain-lookup");
+//    public static void main(String[] args) throws IOException, ResourceException, ScriptException {
+//        Map<String, String> params = new HashMap<String, String>();
+//        params.put("protocol","telnet");
+//        params.put("username","lab");
+//        params.put("password","pass123");
+//        params.put("enablePass","pass123");
+//        params.put("address","10.17.1.51");
+//        params.put("port","2021");
+//        params.put("command","no ip domain-lookup");
+//
+//        Map<String, Object> result = new Expect4GroovyScriptLauncher().launch(new String[]{"src/test/java/"}, "expect4groovy_test.groovy", params);
+//
+//        System.out.println("Status: "+ result.get("status"));
+//        System.out.println("Data"+ result.get("data"));
+//
+//    }
 
-        Map<String, Object> result = new Expect4GroovyScriptLauncher().launch(new String[]{"src/test/java/"}, "expect4groovy_test.groovy", params);
-
-        System.out.println("Status: "+ result.get("status"));
-        System.out.println("Data"+ result.get("data"));
-
-    }
-
-    public Map<String,Object> launch(String[] roots, String scriptName, Map<String, String> params) throws IOException, ResourceException, ScriptException {
+    public Object launch(String[] roots, String scriptName, Map<String, String> params) throws IOException, ResourceException, ScriptException {
         CLIConnection conn = createCliConnection(params);
         try {
             conn.connect(params);
@@ -41,12 +41,7 @@ public class Expect4GroovyScriptLauncher {
             Expect4Groovy.createBindings(conn, binding, true);
             binding.setProperty("params", params);
             GroovyScriptEngine gse = new GroovyScriptEngine(roots);
-            Object result = gse.run(scriptName, binding);
-            if (result instanceof Integer) {
-                return null;
-            } else {
-                return (Map<String, Object>) result;
-            }
+            return gse.run(scriptName, binding);
         } finally {
             conn.disconnect();
         }

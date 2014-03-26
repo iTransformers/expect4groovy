@@ -1,12 +1,13 @@
 package net.itransformers.expect4groovy.expect4jwrapper;
 
-import expect4j.ExpectState;
-import groovy.lang.Closure;
+import net.itransformers.expect4java.Closure;
+import net.itransformers.expect4java.ExpectContext;
+import net.itransformers.expect4java.matches.TimeoutMatch;
 
 /**
  * Simulates: expect { timeout { code } }
  */
-public class TimeoutMatchClosure extends Closure {
+public class TimeoutMatchClosure extends groovy.lang.Closure {
     public TimeoutMatchClosure(Object owner, Object thisObject) {
         super(owner, thisObject);
     }
@@ -17,19 +18,19 @@ public class TimeoutMatchClosure extends Closure {
 
     @Override
     public Object call(final Object... args) {
-        if ((args.length == 1) && (args[0] instanceof Closure)){
-            return new expect4j.matches.TimeoutMatch(new expect4j.Closure() {
+        if ((args.length == 1) && (args[0] instanceof groovy.lang.Closure)){
+            return new TimeoutMatch(null, new Closure() {
                 @Override
-                public void run(ExpectState expectState) throws Exception {
-                    ((Closure)args[0]).call(expectState);
+                public void run(ExpectContext expectState) throws Exception {
+                    ((groovy.lang.Closure)args[0]).call(expectState);
                 }
             });
         } else if ((args.length == 2)  && (args[0] instanceof Integer || args[0] instanceof Long )
-                && (args[1] instanceof Closure)){
-            return new expect4j.matches.TimeoutMatch((Long)args[0], new expect4j.Closure() {
+                && (args[1] instanceof groovy.lang.Closure)){
+            return new TimeoutMatch((Long)args[0], new Closure() {
                 @Override
-                public void run(ExpectState expectState) throws Exception {
-                    ((Closure)args[1]).call(expectState);
+                public void run(ExpectContext expectState) throws Exception {
+                    ((groovy.lang.Closure)args[1]).call(expectState);
                 }
             });
         } else {

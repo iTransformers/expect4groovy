@@ -3,9 +3,7 @@ import net.itransformers.expect4groovy.cliconnection.CLIConnection
 import net.itransformers.expect4groovy.cliconnection.impl.RawSocketCLIConnection
 
 CLIConnection conn = new RawSocketCLIConnection()
-def params = ["user": "vasko", "password": "123", "address": "localhost:22223"]
-
-conn.connect(params)
+def params = ["user": "vvv", "password": "123", "address": "localhost:22223"]
 
 conn.connect(params)
 

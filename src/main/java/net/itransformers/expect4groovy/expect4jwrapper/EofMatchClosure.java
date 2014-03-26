@@ -1,9 +1,10 @@
 package net.itransformers.expect4groovy.expect4jwrapper;
 
-import expect4j.ExpectState;
-import groovy.lang.Closure;
+import net.itransformers.expect4java.Closure;
+import net.itransformers.expect4java.ExpectContext;
+import net.itransformers.expect4java.matches.EofMatch;
 
-public class EofMatchClosure extends Closure {
+public class EofMatchClosure extends groovy.lang.Closure {
 
 
     public EofMatchClosure(Object owner, Object thisObject) {
@@ -18,11 +19,11 @@ public class EofMatchClosure extends Closure {
     public Object call(final Object... args) {
         if ((args.length == 0)){
             return new expect4j.matches.EofMatch();
-        } else if ((args.length == 1) && (args[0] instanceof Closure)){
-            return new expect4j.matches.EofMatch(new expect4j.Closure() {
+        } else if ((args.length == 1) && (args[0] instanceof groovy.lang.Closure)){
+            return new EofMatch(new Closure() {
                 @Override
-                public void run(ExpectState expectState) throws Exception {
-                    ((Closure)args[0]).call(expectState);
+                public void run(ExpectContext expectState) throws Exception {
+                    ((groovy.lang.Closure)args[0]).call(expectState);
                 }
             });
         } else {

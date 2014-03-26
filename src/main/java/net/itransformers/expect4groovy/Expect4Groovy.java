@@ -1,16 +1,16 @@
 package net.itransformers.expect4groovy;
 
 
-import expect4j.Expect4j;
 import groovy.lang.Binding;
 import net.itransformers.expect4groovy.cliconnection.CLIConnection;
 import net.itransformers.expect4groovy.cliconnection.utils.OutputStreamCLILogger;
 import net.itransformers.expect4groovy.cliconnection.utils.TeeInputStream;
 import net.itransformers.expect4groovy.cliconnection.utils.TeeOutputStream;
 import net.itransformers.expect4groovy.expect4jwrapper.*;
+import net.itransformers.expect4java.Expect4j;
+import net.itransformers.expect4java.impl.Expect4jImpl;
 
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,21 +22,16 @@ public class Expect4Groovy {
             is = new TeeInputStream(is, new OutputStreamCLILogger(false));
             os = new TeeOutputStream(os, new OutputStreamCLILogger(true));
         }
-        Map<String, Object> localBindings = createBindings(is,os);
+        Map<String, Object> localBindings = createBindings(new InputStreamReader(is), new OutputStreamWriter(os));
         for (String key : localBindings.keySet()) {
             binding.setProperty(key,localBindings.get(key));
         }
     }
 
-    public static Map<String, Object> createBindings(CLIConnection cliConnection){
-        return createBindings(cliConnection.inputStream(), cliConnection.outputStream());
-
-    }
-
-    public static Map<String, Object> createBindings(InputStream is, OutputStream os){
+    public static Map<String, Object> createBindings(Reader reader, Writer writer){
         Expect4j expect4j;
         try {
-            expect4j = new Expect4j(is, os);
+            expect4j = new Expect4jImpl(reader, writer);
         } catch (Exception e) {
             throw new RuntimeException("Unable to create Expect4j.", e);
         }

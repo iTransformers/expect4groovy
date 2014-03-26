@@ -7,9 +7,7 @@ import groovy.util.ResourceException;
 import groovy.util.ScriptException;
 import net.itransformers.expect4groovy.Expect4Groovy;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
@@ -69,7 +67,8 @@ public class TelnetSimulator {
                 InputStream is = socket.getInputStream();
                 OutputStream os = socket.getOutputStream();
                 Binding binding = new Binding();
-                Map<String, Object> parameters = Expect4Groovy.createBindings(is,os);
+                Map<String, Object> parameters = Expect4Groovy.createBindings(
+                        new InputStreamReader(is),new OutputStreamWriter(os));
                 for (Map.Entry<String, Object> stringStringEntry : parameters.entrySet()) {
                     binding.setProperty(stringStringEntry.getKey(), stringStringEntry.getValue());
                 }
