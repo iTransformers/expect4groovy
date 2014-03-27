@@ -18,7 +18,7 @@ public class EofMatchClosure extends groovy.lang.Closure {
     @Override
     public Object call(final Object... args) {
         if ((args.length == 0)){
-            return new expect4j.matches.EofMatch();
+            return new EofMatch(null);
         } else if ((args.length == 1) && (args[0] instanceof groovy.lang.Closure)){
             return new EofMatch(new Closure() {
                 @Override

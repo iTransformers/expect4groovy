@@ -1,6 +1,5 @@
 package interface_parser
 
-import expect4j.Expect4j
 import net.itransformers.expect4groovy.Expect4GroovyScriptLauncher
 import org.junit.Test
 

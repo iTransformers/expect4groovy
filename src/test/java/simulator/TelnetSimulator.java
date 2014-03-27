@@ -1,6 +1,5 @@
 package simulator;
 
-import expect4j.Expect4j;
 import groovy.lang.Binding;
 import groovy.util.GroovyScriptEngine;
 import groovy.util.ResourceException;
@@ -20,7 +19,7 @@ import java.util.logging.SimpleFormatter;
 public class TelnetSimulator {
 
     public static void main(String[] args) throws IOException, ScriptException, ResourceException {
-        Logger logger = Logger.getLogger(Expect4j.class.getName());
+        Logger logger = Logger.getLogger(TelnetSimulator.class.getName());
         logger.setLevel(Level.ALL);
         ConsoleHandler handler = new ConsoleHandler();
         handler.setFormatter(new SimpleFormatter());
