@@ -41,8 +41,10 @@ public class Expect4Groovy {
         parameters.put("send", new SendClosure(obj, expect4j));
         parameters.put("_re", new RegExpMatchClosure(obj));
         parameters.put("_gl", new GlobMatchClosure(obj));
-        parameters.put("timeout", new TimeoutMatchClosure(obj));
-        parameters.put("eof", new EofMatchClosure(obj));
+        parameters.put("_timeout", new TimeoutMatchClosure(obj));
+        parameters.put("_eof", new EofMatchClosure(obj));
+        parameters.put("reader", reader);
+        parameters.put("writer", writer);
         return parameters;
     }
 }

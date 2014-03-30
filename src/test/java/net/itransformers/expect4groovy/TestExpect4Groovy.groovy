@@ -40,6 +40,11 @@ class TestExpect4Groovy {
         doTest(script)
     }
 
+    @Test
+    public void doTestInterfaceParser() {
+        doTest("interface_parser.groovy")
+    }
+
     private void doTest(String script) {
         initLogger();
         def params = ["protocol": "echo"]
