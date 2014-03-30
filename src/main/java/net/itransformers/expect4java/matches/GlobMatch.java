@@ -12,9 +12,16 @@ public class GlobMatch extends RegExpMatch {
     }
 
     protected Pattern compilePattern(String patternStr) throws MalformedPatternException {
-        int globOptions = GlobCompiler.DEFAULT_MASK | GlobCompiler.QUESTION_MATCHES_ZERO_OR_ONE_MASK;
+        int globOptions = GlobCompiler.QUESTION_MATCHES_ZERO_OR_ONE_MASK;
         char [] patternCh = patternStr.toCharArray();
         String perl5PatternStr = GlobCompiler.globToPerl5(patternCh, globOptions);
         return super.compilePattern(perl5PatternStr);
+    }
+
+    @Override
+    public String toString() {
+        return "GlobMatch{" +
+                "patternStr='" + patternStr + '\'' +
+                '}';
     }
 }

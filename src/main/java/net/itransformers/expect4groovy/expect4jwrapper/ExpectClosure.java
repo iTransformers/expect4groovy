@@ -61,7 +61,6 @@ public class ExpectClosure extends groovy.lang.Closure {
         } else if ((args.length == 1) && args[0] instanceof List){
             List list = (List) args[0];
             List<Match> matchesList = new ArrayList<Match>(list.size()+1);
-            boolean hasTimeoutMatch = false;
             for (Object element : list) {
                 if (element instanceof String) {
                     try {
@@ -76,15 +75,9 @@ public class ExpectClosure extends groovy.lang.Closure {
                     }
                 } else if (element instanceof Match) {
                     matchesList.add((Match) element);
-                    if (element instanceof TimeoutMatch) {
-                        hasTimeoutMatch = true;
-                    }
                 } else {
                     throw new RuntimeException("Element of type: " + element.getClass() + "is not expected");
                 }
-            }
-            if (!hasTimeoutMatch && defaultTimeoutMatch != null){
-                matchesList.add(defaultTimeoutMatch);
             }
             try {
                 return expect4j.expect(matchesList.toArray(new Match[matchesList.size()]));
@@ -96,7 +89,7 @@ public class ExpectClosure extends groovy.lang.Closure {
         }
     }
 
-    public void setDefaultTimeoutMatch(Object defaultTimeoutMatch){
-        this.defaultTimeoutMatch = (TimeoutMatch)defaultTimeoutMatch;
+    public void setTimeout(TimeoutMatch timeoutMatch){
+        expect4j.setTimeout(timeoutMatch);
     }
 }
