@@ -44,6 +44,10 @@ class TestExpect4Groovy {
     public void doTestInterfaceParser() {
         doTest("interface_parser.groovy")
     }
+    @Test
+    public void doTestGlob2() {
+        doTest("test_glob2.groovy")
+    }
 
     private void doTest(String script) {
         initLogger();

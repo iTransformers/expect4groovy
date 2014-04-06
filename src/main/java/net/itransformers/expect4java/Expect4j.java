@@ -10,4 +10,5 @@ public interface Expect4j {
     void send(String str) throws IOException;
     int expect(Match[] matches);
     void setTimeout(TimeoutMatch timeoutMatch);
+    void close();
 }

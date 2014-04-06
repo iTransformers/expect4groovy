@@ -22,6 +22,7 @@ public class Expect4jImpl implements Expect4j, Runnable{
     private TimeoutMatch defaultTimeoutMatch = new TimeoutMatch(DEFAULT_TIMEOUT);
     StringBuffer buffer = new StringBuffer(256);
     boolean eofFound = false;
+    boolean finished = false;
     Logger logger = Logger.getLogger(Expect4jImpl.class.getName());
 
     public Expect4jImpl(Reader reader, Writer writer) {
@@ -165,7 +166,7 @@ public class Expect4jImpl implements Expect4j, Runnable{
     @Override
     public void run() {
         try {
-            while (true) {
+            while (!finished) {
                 char cs[] = new char[256];
                 int size = reader.read(cs);
                 synchronized (this) {
@@ -181,6 +182,10 @@ public class Expect4jImpl implements Expect4j, Runnable{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void close(){
+        finished = true;
+
     }
 
     private String matchesToDump(Match[] matches){
