@@ -18,13 +18,24 @@ expect([
             interfaces[currentInterfaceName] = listOfIpOpts
             println ("1>"+context.buffer)
             expect([
-                    _re(" no ip([^\n]+)\n"){ it1 ->
+                    _re(" no ip redirects([^\n]+)\n"){ it1 ->
                         listOfIpOpts.add(it1.getMatch(1))
-                        println ("2>"+it1.buffer)
+                        println ("ip redirects disabled!"+it1.buffer)
                         it1.exp_continue()
                     },
+                    _re(" no ip unreachables([^\n]+)\n"){ it1 ->
+                        listOfIpOpts.add(it1.getMatch(1))
+                        println ("ICMP unreachable messages disabled!"+it1.buffer)
+                        it1.exp_continue()
+                    },
+                    _re(" no ip unreachables([^\n]+)\n"){ it1 ->
+                        listOfIpOpts.add(it1.getMatch(1))
+                        println ("Proxy ARP messages disabled!"+it1.buffer)
+                        it1.exp_continue()
+                    },
+
                     _re("shutdown\n"){ it1 ->
-                        println ("3">+it1.buffer)
+                        println ("Interface Administratively down">+it1.buffer)
                         it1.exp_continue()
                     },
                     _re("[^\n!]+\n"){ it1 ->
