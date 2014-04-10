@@ -13,7 +13,7 @@ expect([
     _re("hello2 ([^\n]*)\n") {  ExpectContext context ->
         println ("Hello2 " + context.getMatch(1))
         status = true
-    },
+    }
 ])
 
 return status

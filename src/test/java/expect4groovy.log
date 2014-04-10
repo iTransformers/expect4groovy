@@ -1,0 +1,54 @@
+04-10@16:09:06 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:00:35 2014 from 88.203.203.233[\r][\r][\n]
+04-10@16:09:07 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:11:34 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:09:05 2014 from localhost[\r][\r][\n]
+04-10@16:12:36 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:11:33 2014 from localhost[\r][\r][\n]
+04-10@16:12:37 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:12:37 INFO  (OutputStreamCLILogger.java:64)     - >>> ls
+04-10@16:13:08 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:12:36 2014 from localhost[\r][\r][\n]
+04-10@16:13:09 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:13:09 INFO  (OutputStreamCLILogger.java:64)     - >>> ls
+04-10@16:13:41 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:13:08 2014 from localhost[\r][\r][\n]
+04-10@16:13:43 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:13:43 INFO  (OutputStreamCLILogger.java:64)     - >>> ls
+04-10@16:16:07 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:13:41 2014 from localhost[\r][\r][\n]
+04-10@16:16:08 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:16:08 INFO  (OutputStreamCLILogger.java:64)     - >>> ls
+04-10@16:18:28 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:16:07 2014 from localhost[\r][\r][\n]
+04-10@16:18:29 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:18:29 INFO  (OutputStreamCLILogger.java:64)     - >>> ls
+04-10@16:19:36 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:18:28 2014 from localhost[\r][\r][\n]
+04-10@16:19:37 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:19:37 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+04-10@16:19:37 INFO  (OutputStreamCLILogger.java:64)     - >>> s
+04-10@16:19:37 INFO  (OutputStreamCLILogger.java:64)     - >>> exit
+04-10@16:20:06 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:19:36 2014 from localhost[\r][\r][\n]
+04-10@16:20:07 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:20:07 INFO  (OutputStreamCLILogger.java:64)     - >>> ls
+04-10@16:20:07 INFO  (OutputStreamCLILogger.java:64)     - >>> exit
+04-10@16:20:37 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:20:06 2014 from localhost[\r][\r][\n]
+04-10@16:20:38 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:20:38 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+04-10@16:20:38 INFO  (OutputStreamCLILogger.java:64)     - >>> xi
+04-10@16:20:38 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+04-10@16:21:02 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:20:37 2014 from localhost[\r][\r][\n]
+04-10@16:21:03 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:21:03 INFO  (OutputStreamCLILogger.java:64)     - >>> exit[\r][\n]logout[\r][\n]
+04-10@16:27:18 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:21:01 2014 from localhost[\r][\r][\n]
+04-10@16:27:19 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:27:19 INFO  (OutputStreamCLILogger.java:64)     - >>> exit[\r][\n]logout[\r][\n]
+04-10@16:32:46 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:27:18 2014 from localhost[\r][\r][\n]
+04-10@16:32:47 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:32:47 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+04-10@16:32:47 INFO  (OutputStreamCLILogger.java:64)     - >>> x
+04-10@16:32:47 INFO  (OutputStreamCLILogger.java:64)     - >>> it
+04-10@16:32:47 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]logout
+04-10@16:32:47 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+04-10@16:34:56 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:32:45 2014 from localhost[\r][\r][\n]
+04-10@16:34:56 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:35:01 INFO  (OutputStreamCLILogger.java:64)     - >>> exit[\r][\n]logout[\r][\n]
+04-10@16:36:11 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:34:55 2014 from localhost[\r][\r][\n]
+04-10@16:36:11 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:36:12 INFO  (OutputStreamCLILogger.java:64)     - >>> exit[\r][\n]logout[\r][\n]
+04-10@16:50:14 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:36:10 2014 from localhost[\r][\r][\n]
+04-10@16:50:15 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
+04-10@16:50:15 INFO  (OutputStreamCLILogger.java:64)     - >>> exit[\r][\n]logout[\r][\n]

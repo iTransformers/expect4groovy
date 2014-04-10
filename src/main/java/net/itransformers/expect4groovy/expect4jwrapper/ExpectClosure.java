@@ -89,7 +89,22 @@ public class ExpectClosure extends groovy.lang.Closure {
         }
     }
 
+    public void close(){
+        expect4j.close();
+    }
+
     public void setTimeout(TimeoutMatch timeoutMatch){
         expect4j.setTimeout(timeoutMatch);
+    }
+    public void setTimeout(long timeout, final groovy.lang.Closure closure){
+        setTimeout(new TimeoutMatch((long) timeout, new Closure() {
+            @Override
+            public void run(ExpectContext expectState) throws Exception {
+                closure.call(expectState);
+            }
+        }));
+    }
+    public void setTimeout(int timeout, final groovy.lang.Closure closure){
+        setTimeout((long)timeout,closure);
     }
 }

@@ -15,6 +15,7 @@ import java.util.Map;
 public class SshCLIConnection implements CLIConnection {
     public static final int DEFAULT_TIMEOUT = 60000;
     private ChannelShell channel;
+    Session session;
     private InputStream inputStream;
     private OutputStream outputStream;
 
@@ -44,7 +45,6 @@ public class SshCLIConnection implements CLIConnection {
             timeout = Integer.parseInt(timeoutStr);
         }
         JSch jsch = new JSch();
-        Session session = null;
         Hashtable<String,String> config = new Hashtable<String,String>();
         config.put("StrictHostKeyChecking", "no");
         try {
@@ -71,7 +71,8 @@ public class SshCLIConnection implements CLIConnection {
     }
 
     public void disconnect() throws IOException {
-        if (channel != null) channel.disconnect();
+        try { if (channel != null) channel.disconnect(); } catch (RuntimeException e) { e.printStackTrace();}
+        try { if (session != null) session.disconnect(); } catch (RuntimeException e) { e.printStackTrace();}
     }
 
 }

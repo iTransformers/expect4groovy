@@ -11,6 +11,7 @@ import org.apache.oro.text.regex.MatchResult;
 import org.apache.oro.text.regex.Perl5Matcher;
 
 import java.io.*;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -147,7 +148,11 @@ public class Expect4jImpl implements Expect4j, Runnable{
         try {
             expectContext = new ExpectContextImpl(result, input);
             Closure closure = match.getClosure();
-            closure.run(expectContext);
+            if (closure != null) {
+                closure.run(expectContext);
+            } else {
+                logger.finest("No closure defined for this match. Skipping call it");
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -180,7 +185,7 @@ public class Expect4jImpl implements Expect4j, Runnable{
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.FINEST,"IO Error in run method",e);
         }
     }
     public void close(){
