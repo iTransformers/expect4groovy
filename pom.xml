@@ -9,11 +9,6 @@
     <version>1.1-SNAPSHOT</version>
 
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>com</groupId>-->
-            <!--<artifactId>expect4j</artifactId>-->
-            <!--<version>1.0</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>oro</groupId>
             <artifactId>oro</artifactId>
