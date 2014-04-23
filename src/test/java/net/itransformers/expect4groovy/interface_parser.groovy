@@ -35,7 +35,7 @@ expect([
                     },
 
                     _re("shutdown\n"){ it1 ->
-                        println ("Interface Administratively down">+it1.buffer)
+                        println ("Interface Administratively down> "+it1.buffer)
                         it1.exp_continue()
                     },
                     _re("[^\n!]+\n"){ it1 ->
@@ -63,7 +63,7 @@ expect([
                     // do nothing, just exit expect closure
                 }
             ])
-            println ("10>"+it1.buffer)
+            println ("10>"+it.buffer)
             it.exp_continue()
         },
         _re("[^\n#]+\n"){  ExpectContext context2  ->
@@ -83,7 +83,7 @@ expect([
             context2.exp_continue()
         },
         _re("#\n"){
-            println ("15>"+it1.buffer)
+            println ("15>"+it.buffer)
             println "exit outer closure"
             // do nothing, just exit the outer closure
         },
