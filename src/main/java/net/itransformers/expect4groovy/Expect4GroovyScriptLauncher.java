@@ -34,15 +34,13 @@ public class Expect4GroovyScriptLauncher {
 
     Expect4GroovyScriptLauncher launcher = new Expect4GroovyScriptLauncher();
 
-        Map<String, Integer> loginResult = launcher.open(new String[]{"conf/groovy/cisco/ios" + File.separator}, "cisco_login.groovy", params);
-    if(loginResult.get("status")==2){
+        Map<String, Object> loginResult = launcher.open(new String[]{"conf/groovy/cisco/ios" + File.separator}, "cisco_login.groovy", params);
+    if(loginResult.get("status").equals(2)){
         logger.debug(loginResult);
     }else{
-        Map<String, Object> result = null;
-
-        result = launcher.sendCommand("cisco_sendConfigCommand.groovy", "ip route 10.200.1.0 255.255.255.0 192.0.2.1",null);
-        params.put("configMode", (Boolean) result.get("configMode"));
-        result = launcher.sendCommand("cisco_sendConfigCommand.groovy", "ip route 10.210.1.0 255.255.255.0 192.0.2.1",null);
+        Map<String, Object> result = launcher.sendCommand("cisco_sendConfigCommand.groovy", "ip route 10.200.1.0 255.255.255.0 192.0.2.1",null);
+        params.put("configMode", result.get("configMode"));
+        launcher.sendCommand("cisco_sendConfigCommand.groovy", "ip route 10.210.1.0 255.255.255.0 192.0.2.1",null);
         launcher.close("cisco_logout.groovy");
 
     }
@@ -59,8 +57,8 @@ public class Expect4GroovyScriptLauncher {
 
         Expect4GroovyScriptLauncher launcher = new Expect4GroovyScriptLauncher();
 
-        Map<String, Integer> loginResult = launcher.open(new String[]{"/Users/niau/Projects/expect4groovy-expect4groovy/conf/groovy/cisco/ios" + File.separator}, "cisco_login.groovy", params);
-        if(loginResult.get("status")==2){
+        Map<String, Object> loginResult = launcher.open(new String[]{"/Users/niau/Projects/expect4groovy-expect4groovy/conf/groovy/cisco/ios" + File.separator}, "cisco_login.groovy", params);
+        if(loginResult.get("status").equals(2)){
             logger.debug(loginResult);
         }else{
             Map<String, Object> result = null;
@@ -127,16 +125,16 @@ public class Expect4GroovyScriptLauncher {
 
     }
 
-    public Map<String,Integer>  open(String[] roots, String scriptName, Map<String, Object> params) throws ResourceException, ScriptException {
+    public Map<String,Object>  open(String[] roots, String scriptName, Map<String, Object> params) throws ResourceException, ScriptException {
         connection = createCliConnection(params);
-        Map<String, Integer> result = null;
+        Map<String, Object> result = null;
         try {
             connection.connect(params);
             binding = new Binding();
             Expect4Groovy.createBindings(connection, binding, true);
             binding.setProperty("params", params);
             gse = new GroovyScriptEngine(roots);
-            result = (Map<String, Integer>) gse.run(scriptName, binding);
+            result = (Map<String, Object>) gse.run(scriptName, binding);
             if (result.get("status").equals("1")){
                 return result;
             }else {
@@ -149,9 +147,9 @@ public class Expect4GroovyScriptLauncher {
         return result;
     }
 
-    public Map<Integer,String> close(String scriptName) throws ResourceException, ScriptException {
+    public Map<String, Object> close(String scriptName) throws ResourceException, ScriptException {
         try {
-            Map<Integer, String> result = (Map<Integer, String>) gse.run(scriptName, binding);
+            Map<String, Object> result = (Map<String, Object>) gse.run(scriptName, binding);
 
 //            String status  = result.get("status");
             // if (status == 1)){
