@@ -3,3 +3,4 @@
 .DS_Store
 out/
 target/
+.log

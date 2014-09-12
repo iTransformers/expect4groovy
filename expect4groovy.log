@@ -1537,3 +1537,495 @@ R1(config)#
 09-12@10:47:42 INFO  (OutputStreamCLILogger.java:64)     - >>> t
 09-12@10:47:42 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
 09-12@10:47:42 INFO  (OutputStreamCLILogger.java:64)     - >>> R1#
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n][\r][\n]User Access Verification[\r][\n][\r][\n]Username: 
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:62)     - <<< lab[\r]
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> a
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> b
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]Password: 
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:62)     - <<< lab123[\r]
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]R1>
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:62)     - <<< show privilege[\r]
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> s
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> h
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> w
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> p
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> v
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> g
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> Current privilege level is 1[\r][\n]R
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> 1>
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:62)     - <<< enable[\r]
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> a
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> b
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:64)     - >>> Password: 
+09-12@10:50:38 INFO  (OutputStreamCLILogger.java:62)     - <<< lab123[\r]
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]R1#
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:62)     - <<< terminal length 0[\r]
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> m
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> a
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> g
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> h
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> R1#
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:62)     - <<< conf t[\r]
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> c
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> f
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> Enter configuration commands, one per line.  End with CNTL/Z.[\r][\n]R1(config)#
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:62)     - <<< [\n]ip route 10.200.1.0 255.255.255.0 192.0.2.1[\r]
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> p
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> u
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:39 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 9
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> R1(config)#
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:62)     - <<< [\n]ip route 10.210.1.0 255.255.255.0 192.0.2.1[\r]
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> p
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> u
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 9
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> R1(config)#
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:62)     - <<< [\n]exit[\r]
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> x
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:40 INFO  (OutputStreamCLILogger.java:64)     - >>> R1#
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n][\r][\n]User Access Verification[\r][\n][\r][\n]Username: 
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:62)     - <<< lab[\r]
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> a
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> b
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]Password: 
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:62)     - <<< lab123[\r]
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]R1>
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:62)     - <<< show privilege[\r]
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> s
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> h
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> w
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> p
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> v
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> g
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> Current privilege level is 1[\r][\n]R1>
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:62)     - <<< enable[\r]
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> a
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> b
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:64)     - >>> Password: 
+09-12@10:50:54 INFO  (OutputStreamCLILogger.java:62)     - <<< lab123[\r]
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]R1#
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:62)     - <<< terminal length 0[\r]
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> m
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> a
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> g
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> h
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> R1#
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:62)     - <<< conf t[\r]
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> c
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> f
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> Enter configuration commands, one per line.  End with CNTL/Z.[\r][\n]R1(config)#
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:62)     - <<< [\n]ip route 10.200.1.0 255.255.255.0 192.0.2.1[\r]
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> p
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> u
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:55 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 9
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> R1(config)#
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:62)     - <<< [\n]ip route 10.210.1.0 255.255.255.0 192.0.2.1[\r]
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> p
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> u
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 9
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> R1(config)#
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:62)     - <<< [\n]exit[\r]
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> x
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:50:56 INFO  (OutputStreamCLILogger.java:64)     - >>> R1#
+09-12@10:51:13 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n][\r][\n]User Access Verification[\r][\n][\r][\n]Username: 
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:62)     - <<< lab[\r]
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> a
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> b
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]Password: 
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:62)     - <<< lab123[\r]
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]R1>
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:62)     - <<< show privilege[\r]
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> s
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> h
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> w
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> p
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> v
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> g
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> Current privilege level is 1[\r][\n]R1>
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:62)     - <<< enable[\r]
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> a
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> b
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:64)     - >>> Password: 
+09-12@10:51:14 INFO  (OutputStreamCLILogger.java:62)     - <<< lab123[\r]
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]R1#
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:62)     - <<< terminal length 0[\r]
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> m
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> a
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> l
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> g
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> h
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]R1#
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:62)     - <<< conf t[\r]
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> c
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> n
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> f
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> Enter configuration commands, one per line.  End with CNTL/Z.[\r][\n]R1(config)#
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:62)     - <<< [\n]ip route 10.200.1.0 255.255.255.0 192.0.2.1[\r]
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> p
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> u
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:15 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 9
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> R1(config)#
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:62)     - <<< [\n]ip route 10.210.1.0 255.255.255.0 192.0.2.1[\r]
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> p
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> r
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> o
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> u
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 5
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>>  
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 9
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 0
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 2
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> .
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> 1
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> R1(config)#
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:62)     - <<< [\n]exit[\r]
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> e
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> x
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> i
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> t
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> [\r][\n]
+09-12@10:51:16 INFO  (OutputStreamCLILogger.java:64)     - >>> R1#
