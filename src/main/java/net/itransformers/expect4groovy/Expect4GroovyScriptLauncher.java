@@ -34,21 +34,16 @@ public class Expect4GroovyScriptLauncher {
 
     Expect4GroovyScriptLauncher launcher = new Expect4GroovyScriptLauncher();
 
-        Map<String, Integer> loginResult = launcher.open(new String[]{"/Users/niau/Projects/expect4groovy-expect4groovy/conf/groovy/cisco/ios" + File.separator}, "cisco_login.groovy", params);
+        Map<String, Integer> loginResult = launcher.open(new String[]{"conf/groovy/cisco/ios" + File.separator}, "cisco_login.groovy", params);
     if(loginResult.get("status")==2){
         logger.debug(loginResult);
     }else{
         Map<String, Object> result = null;
-       // result = launcher.sendCommand("cisco_sendCommand.groovy", "conf t",null);
 
         result = launcher.sendCommand("cisco_sendConfigCommand.groovy", "ip route 10.200.1.0 255.255.255.0 192.0.2.1",null);
         params.put("configMode", (String) result.get("configMode"));
         result = launcher.sendCommand("cisco_sendConfigCommand.groovy", "ip route 10.210.1.0 255.255.255.0 192.0.2.1",null);
-
-
-//        Map<String, Object> evalData = (Map<String, Object>) result.get("reportResult");
-        launcher.close(
-                "cisco_logout.groovy");
+        launcher.close("cisco_logout.groovy");
 
     }
     }
@@ -69,7 +64,7 @@ public class Expect4GroovyScriptLauncher {
             logger.debug(loginResult);
         }else{
             Map<String, Object> result = null;
-            result = launcher.sendCommand("cisco_sendCommand.groovy", "sh runn", "/Users/niau/Projects/expect4groovy-expect4groovy/conf/groovy/cisco/ios/cisco_config_eval.groovy");
+            result = launcher.sendCommand("cisco_sendCommand.groovy", "sh runn", "/conf/groovy/cisco/ios/cisco_config_eval.groovy");
             Map<String, Object> evalData = (Map<String, Object>) result.get("reportResult");
             StringBuilder sb = new StringBuilder();
             if(evalData!=null){
@@ -153,6 +148,7 @@ public class Expect4GroovyScriptLauncher {
         }
         return result;
     }
+
     public Map<Integer,String> close(String scriptName) throws ResourceException, ScriptException {
         try {
             Map<Integer, String> result = (Map<Integer, String>) gse.run(scriptName, binding);
