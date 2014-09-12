@@ -13,6 +13,7 @@ defaultTerminator = "\r"
 logedIn = "false"
 logedInPowerMode = "false"
 logedInConfigMode = "false"
+configPrompt = null;
 hostname = ""
 status = ["success": 1, "failure": 2]
 
@@ -34,10 +35,13 @@ def sendCommand() {
             return ["status": returnFlag, "reportResult": evalResult["reportResult"], "commandResult": evalResult["commandResult"]]
         }
     }
-    expect _re(params["hostname"]+powerUserPrompt + "\$") {
-        returnFlag = status["success"]
-        commandResult = it.getBuffer()
-    }
+    expect([
+        _re(params["hostname"]+powerUserPrompt + "\$") {
+            returnFlag = status["success"]
+            commandResult = it.getBuffer()
+        }
+
+    ]);
     return ["status": returnFlag, "commandResult": commandResult]
 
 

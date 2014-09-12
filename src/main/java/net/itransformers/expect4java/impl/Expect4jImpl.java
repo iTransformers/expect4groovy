@@ -67,7 +67,7 @@ public class Expect4jImpl implements Expect4j, Runnable{
                         if (matcher.contains(input, regExpMatch.getPattern())) {
                             MatchResult result = matcher.getMatch();
                             buffer = new StringBuffer();
-                            buffer.append(input.substring(result.end(0)));
+                            buffer.append(input.substring(result.beginOffset(0) + result.end(0)));
                             logger.finest("Matched! Invoking match closure...");
                             expectContext = invokeClosure(regExpMatch, input, result);
                             hasMatch = true;

@@ -23,6 +23,36 @@ public class Expect4GroovyScriptLauncher {
     static Logger logger = Logger.getLogger(Expect4GroovyScriptLauncher.class);
 
     public static void main(String[] args) throws IOException, ResourceException, ScriptException {
+
+    Map<String, String> params = new HashMap<String, String>();
+    params.put("protocol","telnet");
+    params.put("username","lab");
+    params.put("password","lab123");
+    params.put("enable-password","lab123");
+    params.put("address","193.19.172.133");
+    params.put("port","11123");
+
+    Expect4GroovyScriptLauncher launcher = new Expect4GroovyScriptLauncher();
+
+        Map<String, Integer> loginResult = launcher.open(new String[]{"/Users/niau/Projects/expect4groovy-expect4groovy/conf/groovy/cisco/ios" + File.separator}, "cisco_login.groovy", params);
+    if(loginResult.get("status")==2){
+        logger.debug(loginResult);
+    }else{
+        Map<String, Object> result = null;
+       // result = launcher.sendCommand("cisco_sendCommand.groovy", "conf t",null);
+
+        result = launcher.sendCommand("cisco_sendConfigCommand.groovy", "ip route 10.200.1.0 255.255.255.0 192.0.2.1",null);
+        params.put("configMode", (String) result.get("configMode"));
+        result = launcher.sendCommand("cisco_sendConfigCommand.groovy", "ip route 10.210.1.0 255.255.255.0 192.0.2.1",null);
+
+
+//        Map<String, Object> evalData = (Map<String, Object>) result.get("reportResult");
+        launcher.close(
+                "cisco_logout.groovy");
+
+    }
+    }
+    public static void main1(String[] args) throws IOException, ResourceException, ScriptException {
         Map<String, String> params = new HashMap<String, String>();
         params.put("protocol","telnet");
         params.put("username","lab");
@@ -34,12 +64,12 @@ public class Expect4GroovyScriptLauncher {
 
         Expect4GroovyScriptLauncher launcher = new Expect4GroovyScriptLauncher();
 
-        Map<String, Integer> loginResult = launcher.open(new String[]{"C:\\Users\\niki\\IdeaProjects\\expect4groovy\\conf\\groovy\\cisco\\ios" + File.separator}, "cisco_login.groovy", params);
+        Map<String, Integer> loginResult = launcher.open(new String[]{"/Users/niau/Projects/expect4groovy-expect4groovy/conf/groovy/cisco/ios" + File.separator}, "cisco_login.groovy", params);
         if(loginResult.get("status")==2){
             logger.debug(loginResult);
         }else{
             Map<String, Object> result = null;
-            result = launcher.sendCommand("cisco_sendCommand.groovy", "sh runn", "C:\\Users\\niki\\IdeaProjects\\expect4groovy\\conf\\groovy\\cisco\\ios\\cisco_config_eval.groovy");
+            result = launcher.sendCommand("cisco_sendCommand.groovy", "sh runn", "/Users/niau/Projects/expect4groovy-expect4groovy/conf/groovy/cisco/ios/cisco_config_eval.groovy");
             Map<String, Object> evalData = (Map<String, Object>) result.get("reportResult");
             StringBuilder sb = new StringBuilder();
             if(evalData!=null){
