@@ -23,7 +23,7 @@ public class OutputStreamCLILogger extends OutputStream {
 
     @Override
     public void write(byte[] bytes) throws IOException {
-        super.write(bytes);    //To change body of overridden methods use File | Settings | File Templates.
+        super.write(bytes);
         if (isOutputLogging) {
             logger.info("<<< " + os.toString());
         } else {
@@ -75,6 +75,7 @@ public class OutputStreamCLILogger extends OutputStream {
                 case 0x0C : os.write(("[\\f]").getBytes()); break;
                 case 0x07 : os.write(("[\\a]").getBytes()); break;
                 case 0x1B : os.write(("[\\e]").getBytes()); break;
+                case 0x1D : os.write(("[\\]]").getBytes()); break;
                 default: os.write((String.format("[\\x%02X]",b)).getBytes());
             }
         } else { // printable characters

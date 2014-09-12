@@ -20,7 +20,9 @@ status = ["success": 1, "failure": 2]
 exit()
 
 def exit(){
-    send ("exit" + defaultTerminator)
-    expect _eof()
+//    send ("exit" + defaultTerminator)
+//    send(""+(char)29)
+//    send("quit"+defaultTerminator)
+//    expect _eof()
     return ["status": 1, "data": "Logout Success!"]
 }
