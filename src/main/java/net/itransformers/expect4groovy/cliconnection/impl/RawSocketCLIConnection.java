@@ -18,18 +18,15 @@ public class RawSocketCLIConnection implements CLIConnection {
     public RawSocketCLIConnection() {
     }
 
-    public void connect(Map<String, String> params) throws IOException {
-        String address = params.get("address");
+    public void connect(Map<String, Object> params) throws IOException {
+        String address = (String) params.get("address");
         if (address == null) {
             throw new RuntimeException("Missing parameter: address");
         }
-        String portStr = params.get("port");
-        int port;
-        try {
-            port = Integer.parseInt(portStr);
-        } catch (NumberFormatException nfe){
+        if (!(params.get("port") instanceof Integer)) {
             throw new RuntimeException("invalid format of port in address parameter: "+ address);
         }
+        Integer port = (Integer) params.get("port");
         logger.info("Establishing connection ...");
         socket = new Socket(address, port);
         inputStream  = socket.getInputStream();

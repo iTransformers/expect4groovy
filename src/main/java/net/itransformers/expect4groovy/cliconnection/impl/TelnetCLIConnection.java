@@ -14,7 +14,7 @@ public class TelnetCLIConnection implements CLIConnection{
     private TelnetClient telnet = new TelnetClient();
 
     @Override
-    public void connect(Map<String, String> params) throws IOException {
+    public void connect(Map<String, Object> params) throws IOException {
 //        logger.info("Open telnet connection to: " + host + ":" + port);
         Questioner q = new Questioner() {
             @Override
@@ -34,8 +34,8 @@ public class TelnetCLIConnection implements CLIConnection{
             if (!params.containsKey("port")) {
                 throw new IllegalArgumentException("no port parameter is specified");
             }
-            int port = Integer.parseInt(params.get("port"));
-            telnet.connect(params.get("address"), port);
+            Integer port = (Integer) params.get("port");
+            telnet.connect((String) params.get("address"), port);
         } catch (IOException e) {
             e.printStackTrace();
             q.showMessage(e.getMessage());

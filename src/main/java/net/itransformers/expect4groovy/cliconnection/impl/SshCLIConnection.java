@@ -19,31 +19,27 @@ public class SshCLIConnection implements CLIConnection {
     private InputStream inputStream;
     private OutputStream outputStream;
 
-    public void connect(Map<String, String> params) throws IOException {
-        String address = params.get("address");
+    public void connect(Map<String, Object> params) throws IOException {
+        String address = (String) params.get("address");
         if (address == null) {
             throw new RuntimeException("Missing parameter: address");
         }
-        String portStr = params.get("port");
-        int port;
-        try {
-            port = Integer.parseInt(portStr);
-        } catch (NumberFormatException nfe){
-            throw new RuntimeException("invalid format of port in address parameter: "+ address);
+        if (!(params.get("port") instanceof Integer)) {
+            throw new RuntimeException("invalid format of port parameter: "+ address);
         }
-        String user1 = params.get("username");
+        Integer port = (Integer)params.get("port");
+        String user1 = (String) params.get("username");
         if (user1 == null) {
             throw new RuntimeException("Missing parameter: username");
         }
-        String password1 = params.get("password");
+        String password1 = (String) params.get("password");
         if (password1 == null) {
             throw new RuntimeException("Missing parameter: password");
         }
-        String timeoutStr = params.get("timeout");
-        int timeout = DEFAULT_TIMEOUT;
-        if (timeoutStr != null){
-            timeout = Integer.parseInt(timeoutStr);
+        if (!( params.get("timeout") instanceof Integer)) {
+            throw new RuntimeException("invalid format of timeout parameter: "+ address);
         }
+        Integer timeout = (Integer)params.get("timeout");
         JSch jsch = new JSch();
         Hashtable<String,String> config = new Hashtable<String,String>();
         config.put("StrictHostKeyChecking", "no");

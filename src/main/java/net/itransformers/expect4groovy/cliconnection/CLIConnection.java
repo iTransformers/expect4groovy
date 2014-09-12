@@ -13,7 +13,7 @@ public interface CLIConnection {
      * @throws IOException if any IOException when
      * communication with the NE.
      */
-    void connect(Map<String, String> params) throws IOException;
+    void connect(Map<String, Object> params) throws IOException;
     /**
      * Disconnects the session to the host.
      * @throws IOException if any IOException when

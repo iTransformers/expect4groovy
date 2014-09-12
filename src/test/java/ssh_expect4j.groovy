@@ -3,7 +3,7 @@ powerUserPrompt = "#"
 defaultTerminator = "\r"
 logedIn = "false"
 logedInPowerMode = "false"
-logedInConfigMode = "false"
+logedInConfigMode = false
 hostname = ""
 status = ["success": 1, "failure": 2]
 

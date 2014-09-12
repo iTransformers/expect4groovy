@@ -10,7 +10,7 @@ public class EchoCLIConnection implements CLIConnection{
     PipedInputStream inputStream = new PipedInputStream(BUFFER);
 
     @Override
-    public void connect(Map<String, String> params) throws IOException {
+    public void connect(Map<String, Object> params) throws IOException {
 
     }
 

@@ -24,7 +24,7 @@ powerUserPrompt = "#"
 defaultTerminator = "\r"
 logedIn = "false"
 logedInPowerMode = "false"
-logedInConfigMode = "false"
+logedInConfigMode = false
 hostname = ""
 status = ["success": 1, "failure": 2]
 
@@ -169,7 +169,7 @@ def sendConfigCommand() {
     if (logedInPowerMode == "true") {
         send "configure terminal" + defaultTerminator
         expect _re(powerUserPrompt + "\$") {
-            logedInConfigMode = "true"
+            logedInConfigMode = true
         }
 
 
@@ -178,7 +178,7 @@ def sendConfigCommand() {
     }
 
 //Send Configuration command
-    if (logedInConfigMode == "true") {
+    if (logedInConfigMode == true) {
         send params["command"] + defaultTerminator
         expect _re("% Invalid input detected") {
             println("Error! " + "The command \"" + params["command"] + "\" is producing the following error: " + it.getBuffer())

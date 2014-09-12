@@ -24,13 +24,13 @@ public class Expect4GroovyScriptLauncher {
 
     public static void main(String[] args) throws IOException, ResourceException, ScriptException {
 
-    Map<String, String> params = new HashMap<String, String>();
+    Map<String, Object> params = new HashMap<String, Object>();
     params.put("protocol","telnet");
     params.put("username","lab");
     params.put("password","lab123");
     params.put("enable-password","lab123");
     params.put("address","193.19.172.133");
-    params.put("port","11123");
+    params.put("port",11123);
 
     Expect4GroovyScriptLauncher launcher = new Expect4GroovyScriptLauncher();
 
@@ -41,20 +41,20 @@ public class Expect4GroovyScriptLauncher {
         Map<String, Object> result = null;
 
         result = launcher.sendCommand("cisco_sendConfigCommand.groovy", "ip route 10.200.1.0 255.255.255.0 192.0.2.1",null);
-        params.put("configMode", (String) result.get("configMode"));
+        params.put("configMode", (Boolean) result.get("configMode"));
         result = launcher.sendCommand("cisco_sendConfigCommand.groovy", "ip route 10.210.1.0 255.255.255.0 192.0.2.1",null);
         launcher.close("cisco_logout.groovy");
 
     }
     }
     public static void main1(String[] args) throws IOException, ResourceException, ScriptException {
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, Object> params = new HashMap<String, Object>();
         params.put("protocol","telnet");
         params.put("username","lab");
         params.put("password","lab123");
         params.put("enable-password","lab123");
         params.put("address","10.17.1.13");
-        params.put("port","23");
+        params.put("port",23);
         params.put("command","no ip domain-lookup");
 
         Expect4GroovyScriptLauncher launcher = new Expect4GroovyScriptLauncher();
@@ -101,7 +101,7 @@ public class Expect4GroovyScriptLauncher {
 //        }
     }
 
-    public Object launch(String[] roots, String scriptName, Map<String, String> params) throws IOException, ResourceException, ScriptException {
+    public Object launch(String[] roots, String scriptName, Map<String, Object> params) throws IOException, ResourceException, ScriptException {
         CLIConnection conn = createCliConnection(params);
         try {
             conn.connect(params);
@@ -127,7 +127,7 @@ public class Expect4GroovyScriptLauncher {
 
     }
 
-    public Map<String,Integer>  open(String[] roots, String scriptName, Map<String, String> params) throws ResourceException, ScriptException {
+    public Map<String,Integer>  open(String[] roots, String scriptName, Map<String, Object> params) throws ResourceException, ScriptException {
         connection = createCliConnection(params);
         Map<String, Integer> result = null;
         try {
@@ -165,7 +165,7 @@ public class Expect4GroovyScriptLauncher {
         return null;
     }
 
-    private CLIConnection createCliConnection(Map<String, String> params) {
+    private CLIConnection createCliConnection(Map<String, Object> params) {
         CLIConnection conn;
         if ("telnet".equals(params.get("protocol"))){
             conn = new TelnetCLIConnection();
