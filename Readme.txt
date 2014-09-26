@@ -3,12 +3,13 @@ This is the first version of the expect4groovy library.
 Dependencies
 ==================================================
 expect4groovy runtime depends on the following other libraries.
-- Maven: com:expect4j:1.0
-  Project Home: https://code.google.com/p/expect4j/
-  https://expect4j.googlecode.com/files/expect4j-1.0.jar
+
 - Maven: org.codehaus.groovy:groovy-all:2.1.9
-- Maven: oro:oro:2.0.8
+- Maven: org.apache.commons:commons-net:3.3.1
 - Maven: com.jcraft:jsch:0.1.44-1 (optional for ssh connections)
+- Maven: commons-net:commons-net:3.0.1
+- Maven: oro:oro:2.0.8
+- Maven: log4j:log4j:1.2.16
 
 Usage
 =================================================
@@ -37,7 +38,7 @@ the following groovy closures into script bindings:
           println("Matched hello")
           it.exp_continue()
       },
-      _re("hello [0-9]+\r"){ expect4j.ExpectState expectState ->
+      _re("hello [0-9]+\r"){ net.itransformers.expect4java.ExpectContext expectState ->
           println("Matched: "+expectState.getMatch())
           expectState.exp_continue()
       }
@@ -75,7 +76,7 @@ the following groovy closures into script bindings:
 
 - eof     : EofMatchClosure
 
-Inside each match closure the following object is available: expect4j.ExpectState.
+Inside each match closure the following object is available: net.itransformers.expect4java.ExpectContext.
 This object has the following most important methods:
 - exp_continue()
 - getMatch()

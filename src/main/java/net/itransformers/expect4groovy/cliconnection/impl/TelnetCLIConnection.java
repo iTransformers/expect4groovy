@@ -1,6 +1,5 @@
 package net.itransformers.expect4groovy.cliconnection.impl;
 
-import com.wittams.gritty.Questioner;
 import net.itransformers.expect4groovy.cliconnection.CLIConnection;
 import org.apache.commons.net.telnet.TelnetClient;
 
@@ -16,20 +15,6 @@ public class TelnetCLIConnection implements CLIConnection{
     @Override
     public void connect(Map<String, Object> params) throws IOException {
 //        logger.info("Open telnet connection to: " + host + ":" + port);
-        Questioner q = new Questioner() {
-            @Override
-            public String questionVisible(String s, String s1) {
-                return null;
-            }
-
-            @Override
-            public String questionHidden(String s) {
-                return null;
-            }
-
-            @Override
-            public void showMessage(String s) {}
-        };
         try {
             if (!params.containsKey("port")) {
                 throw new IllegalArgumentException("no port parameter is specified");
@@ -38,7 +23,6 @@ public class TelnetCLIConnection implements CLIConnection{
             telnet.connect((String) params.get("address"), port);
         } catch (IOException e) {
             e.printStackTrace();
-            q.showMessage(e.getMessage());
         }
         telnet.setDefaultTimeout(2000);
     }

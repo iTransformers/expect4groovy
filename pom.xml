@@ -6,13 +6,18 @@
 
     <groupId>iTransformers</groupId>
     <artifactId>expect4groovy</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
 
     <dependencies>
         <dependency>
             <groupId>oro</groupId>
             <artifactId>oro</artifactId>
             <version>2.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.3.1</version>
         </dependency>
         <dependency>
             <groupId>com.jcraft</groupId>
@@ -30,11 +35,6 @@
             <version>1.2.16</version>
         </dependency>
         <dependency>
-            <groupId>com.wittams.gritty</groupId>
-            <artifactId>gritty</artifactId>
-            <version>0.0.2</version>
-        </dependency>
-        <dependency>
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
             <version>3.0.1</version>
@@ -49,11 +49,6 @@
             <artifactId>testng</artifactId>
             <version>6.1.1</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.3.1</version>
         </dependency>
     </dependencies>
 
