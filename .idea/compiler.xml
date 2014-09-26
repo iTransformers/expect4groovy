@@ -25,6 +25,9 @@
         <module name="expect4groovy" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="expect4groovy" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

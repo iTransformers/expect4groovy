@@ -78,16 +78,14 @@ the following groovy closures into script bindings:
 
 Inside each match closure the following object is available: net.itransformers.expect4java.ExpectContext.
 This object has the following most important methods:
-- exp_continue()
-- getMatch()
-- getMatch(int groupnum)
-- getBuffer()
-- exp_continue_reset_timer()
-- shouldContinue()
-- shouldResetTimer()
-etc. (See expect4j documentation for more details)
+ - void exp_continue();
+ - void exp_continue_reset_timer();
+ - String getBuffer();
+ - String getMatch(int groupnum);
+ - String getMatch();
 
--------------------------------------------------------------
+Registering groovy closures
+====================================================
 The above Groovy closures are registered into script bindings with one of the following overloads
 of createBindings method:
 
@@ -100,6 +98,39 @@ CLIConnection conn = new RawSocketCLIConnection()
 conn.connect(["user":"v","password":"123","address":"localhost:23"])
 Expect4Groovy.createBindings(conn, getBinding(), true)
 
+Example expect4groovy script
+==================================================
+import net.itransformers.expect4java.ExpectContext
+
+def params = ["protocol": "echo"]
+String[] roots = new String[1];
+roots[0] = path
+Object result = new Expect4GroovyScriptLauncher().launch(roots, script, params);
+
+
+boolean match1 = false
+boolean match2 = false
+boolean match3 = false
+send "hello1 World\n"
+send "hello2 World\n"
+send "hello3 World\n"
+expect([
+    _re("hello1 ([^\n]*)\n") {  ExpectContext context ->
+        println ("Hello1 " + context.getMatch(1))
+        match1 = true
+        expect ([_re("hello2 ([^\n]*)\n") {  ExpectContext context1 ->
+                println ("Hello2 " + context1.getMatch(1))
+                match2 = true
+            }])
+        context.exp_continue()
+    },
+    _re("hello3 ([^\n]*)\n") {  ExpectContext context ->
+        println ("Hello3 " + context.getMatch(1))
+        match3 = true
+    },
+])
+
+return match1 && match2 && match3
 
 Running example
 ===================================================

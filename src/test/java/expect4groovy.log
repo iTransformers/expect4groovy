@@ -52,3 +52,11 @@
 04-10@16:50:14 INFO  (OutputStreamCLILogger.java:64)     - >>> Welcome to Ubuntu 12.04.3 LTS (GNU/Linux 3.8.0-29-generic x86_64)[\r][\n][\r][\n] * Documentation:  https://help.ubuntu.com/[\r][\n][\r][\n]375 packages can be updated.[\r][\n]150 updates are security updates.[\r][\n][\r][\n]Last login: Thu Apr 10 16:36:10 2014 from localhost[\r][\r][\n]
 04-10@16:50:15 INFO  (OutputStreamCLILogger.java:64)     - >>> vasko@vasko-home:~$ 
 04-10@16:50:15 INFO  (OutputStreamCLILogger.java:64)     - >>> exit[\r][\n]logout[\r][\n]
+09-26@15:07:28 INFO  (OutputStreamCLILogger.java:64)     - >>> hello1 World[\n]
+09-26@15:07:28 INFO  (OutputStreamCLILogger.java:64)     - >>> hello2 World[\n]hello3 World[\n]
+09-26@15:09:23 INFO  (OutputStreamCLILogger.java:64)     - >>> hello1 World[\n]
+09-26@15:09:23 INFO  (OutputStreamCLILogger.java:64)     - >>> hello2 World[\n]hello3 World[\n]
+09-26@15:09:54 INFO  (OutputStreamCLILogger.java:64)     - >>> hello1 World[\n]
+09-26@15:09:54 INFO  (OutputStreamCLILogger.java:64)     - >>> hello2 World[\n]hello3 World[\n]
+09-26@15:10:24 INFO  (OutputStreamCLILogger.java:64)     - >>> hello1 World[\n]
+09-26@15:10:24 INFO  (OutputStreamCLILogger.java:64)     - >>> hello2 World[\n]hello3 World[\n]
