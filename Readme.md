@@ -2,20 +2,20 @@ Building
 ===================================================
 1. To build the expect4groovy.jar only use:
 
-```mvn package```
+   ```mvn package```
 
 2. To build the expect4groovy-jar-with-dependencies.jar use:
 
-```mvn assembly:assembly```
+   ```mvn assembly:assembly```
 
 Running
 ===================================================
 1. Running with expect4groovy-jar-with-dependencies.jar:
 
-```java -jar target\expect4groovy-1.1-jar-with-dependencies.jar src\test\java\example.groovy```
-or
+   ```java -jar target\expect4groovy-1.1-jar-with-dependencies.jar src\test\java\example.groovy```
+   or
 
-```java -jar target\expect4groovy-1.1-jar-with-dependencies.jar src\test\java\example.groovy DEBUG```
+   ```java -jar target\expect4groovy-1.1-jar-with-dependencies.jar src\test\java\example.groovy DEBUG```
 
 2. Running with expect4groovy.jar
 
