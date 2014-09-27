@@ -128,7 +128,7 @@ def params = [:] // empty map for echo connection
 conn.connect(params)
 
 Expect4Groovy.createBindings(conn, getBinding(), true)
-
+`
 expect.setTimeout(1000){
     println "Timeout while expecting"
 }
@@ -189,7 +189,6 @@ expect([
 
 // Lets close echo connection
 conn.disconnect()
-`
 
 Running example
 ===================================================
