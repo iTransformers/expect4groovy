@@ -88,7 +88,7 @@ public class Expect4jImpl implements Expect4j, Runnable{
                     TimeoutMatch timeoutMatch = findTimeoutMatch(matches);
                     long deltaTime = timeoutMatch.getTimeout() - stopWatch.getTime();
                     logger.debug("First pass no match found. Delta time="+deltaTime);
-                    if (deltaTime < 0) {
+                    if (deltaTime <= 0) {
                         if (timeoutMatch.getClosure() == null) {
                             throw new RuntimeException("Expect timeouted, while expecting: "+
                                     matchesToDump(matches) + " input buffer:"+buffer.toString());

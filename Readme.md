@@ -100,37 +100,77 @@ Expect4Groovy.createBindings(conn, getBinding(), true)
 
 Example expect4groovy script
 ==================================================
+import net.itransformers.expect4groovy.Expect4Groovy
+import net.itransformers.expect4groovy.cliconnection.CLIConnection
+import net.itransformers.expect4groovy.cliconnection.impl.EchoCLIConnection
 import net.itransformers.expect4java.ExpectContext
 
-def params = ["protocol": "echo"]
-String[] roots = new String[1];
-roots[0] = path
-Object result = new Expect4GroovyScriptLauncher().launch(roots, script, params);
+CLIConnection conn = new EchoCLIConnection()
+def params = [:] // empty map for echo connection
+conn.connect(params)
 
+Expect4Groovy.createBindings(conn, getBinding(), true)
 
-boolean match1 = false
-boolean match2 = false
-boolean match3 = false
-send "hello1 World\n"
-send "hello2 World\n"
-send "hello3 World\n"
-expect([
-    _re("hello1 ([^\n]*)\n") {  ExpectContext context ->
-        println ("Hello1 " + context.getMatch(1))
-        match1 = true
-        expect ([_re("hello2 ([^\n]*)\n") {  ExpectContext context1 ->
-                println ("Hello2 " + context1.getMatch(1))
-                match2 = true
-            }])
-        context.exp_continue()
+expect.setTimeout(1000){
+    println "Timeout while expecting"
+}
+
+// simple send to echo connection
+send("echo\n")
+send("test\n")
+expect ("echo\n") {
+    // Example how to use nested expect closures
+    expect("test\n") {
+        send("hello\n") // send to echo connection again
+    }
+}
+// expect hello as it should be send already to the echo connection
+expect("hello\n");
+
+// Example usage of '_re' closure
+send ("echo1234")
+expect (_re("[a-z]+([0-9]+)"){
+    println("Captured: "+it.getMatch(1))
+})
+
+// More complicated examples with array of Match closures.
+// Shows also how to use exp_continue of ExpectContext
+send ("echo1234\n")
+send ("5678echo\n")
+send ("ZZZ\n")
+expect ([
+    _re("[a-z]+([0-9]+)"){ ExpectContext it ->
+        println("Captured: "+it.getMatch(1))
+        it.exp_continue();
     },
-    _re("hello3 ([^\n]*)\n") {  ExpectContext context ->
-        println ("Hello3 " + context.getMatch(1))
-        match3 = true
+    _re("([0-9]+)[a-z]+"){
+        println("Captured: "+it.getMatch())
+        it.exp_continue();
     },
+    _gl("ZZZ"){
+        println("Captured: ZZZ")
+    }
 ])
 
-return match1 && match2 && match3
+//Shows how the global timeout closure will be invoked.
+send("hello\n")
+expect("John"){
+    println("This text should not appear in console")
+}
+
+//Shows how the local timeout closure will be invoked.
+send("test\n")
+expect([
+    _gl("Smith") {
+        println("This text should not appear in console")
+    },
+    _timeout(500){
+        println("This is a timeout example")
+    }
+])
+
+// Lets close echo connection
+conn.disconnect()
 
 Running example
 ===================================================
