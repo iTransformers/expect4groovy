@@ -6,7 +6,7 @@ boolean status = false;
 String cmdResponse = new File("src/test/java/net/itransformers/expect4groovy","interface_command.txt").text;
 send(cmdResponse)
 
-expect.setTimeout(_timeout(60000){
+expect.setTimeout(_timeout(100){
     status = false
 })
 

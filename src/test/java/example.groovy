@@ -2,6 +2,15 @@ import net.itransformers.expect4groovy.Expect4Groovy
 import net.itransformers.expect4groovy.cliconnection.CLIConnection
 import net.itransformers.expect4groovy.cliconnection.impl.EchoCLIConnection
 import net.itransformers.expect4java.ExpectContext
+import org.apache.log4j.Level
+import org.apache.log4j.LogManager
+
+if (args.length == 0){
+    LogManager.getRootLogger().setLevel(Level.INFO);
+} else {
+    LogManager.getRootLogger().setLevel(Level.toLevel(args[0]));
+}
+
 
 CLIConnection conn = new EchoCLIConnection()
 def params = [:] // empty map for echo connection

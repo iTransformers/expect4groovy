@@ -24,12 +24,7 @@ public class OutputStreamCLILogger extends OutputStream {
     @Override
     public void write(byte[] bytes) throws IOException {
         super.write(bytes);
-        if (isOutputLogging) {
-            logger.info("<<< " + os.toString());
-        } else {
-            logger.info(">>> " + os.toString());
-        }
-        os.reset();
+        doFlush();
     }
 
     @Override
@@ -45,23 +40,22 @@ public class OutputStreamCLILogger extends OutputStream {
         for (int i = 0 ; i < len ; i++) {
             doWrite(b[off + i]);
         }
-
         doFlush();
     }
 
     @Override
     public void write(int b) throws IOException {
         doWrite(b);
-        if (b == '\r'){
+        if (b == '\r' || b == '\n'){
             doFlush();
         }
     }
 
     private void doFlush(){
         if (isOutputLogging) {
-            logger.info("<<< " + os.toString());
-        } else {
             logger.info(">>> " + os.toString());
+        } else {
+            logger.info("<<< " + os.toString());
         }
         os.reset();
     }

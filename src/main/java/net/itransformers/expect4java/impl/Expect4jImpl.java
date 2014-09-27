@@ -40,7 +40,7 @@ public class Expect4jImpl implements Expect4j, Runnable{
 
     @Override
     public void send(String str) throws IOException {
-        System.out.println("Sending >>> "+ str);
+//        logger.info("Sending: "+ str); // logged by tee logger
         writer.write(str);
         writer.flush();
     }
