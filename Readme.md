@@ -13,6 +13,7 @@ Running
 1. Running with expect4groovy-jar-with-dependencies.jar:
 
    ```java -jar target\expect4groovy-1.1-jar-with-dependencies.jar src\test\java\example.groovy```
+   
    or
 
    ```java -jar target\expect4groovy-1.1-jar-with-dependencies.jar src\test\java\example.groovy DEBUG```
@@ -26,6 +27,7 @@ Running
    ```
 
    ```java groovy.lang.GroovyShell src\test\java\example.groovy```
+   
    or
 
    ```java groovy.lang.GroovyShell src\test\java\example.groovy DEBUG```
