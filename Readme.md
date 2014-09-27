@@ -11,10 +11,10 @@ expect4groovy runtime depends on the following other libraries.
 - Maven: oro:oro:2.0.8
 - Maven: log4j:log4j:1.2.16
 
-Usage
+excpect4groovy closures
 =================================================
-Typical usage of this library is inside a groovy script where one can register
-the following groovy closures into script bindings:
+This library is registers the following Groovy closures into
+the groovy script's bindings:
 
 - send    : SendClosure
   The send closure is used to send characters
@@ -23,15 +23,15 @@ the following groovy closures into script bindings:
 
 - expect  : ExpectClosure
   The expect closure has several overloads:
-  -- expect(string)
+  - expect(string)
      Example of invoking this closure overload is:
      expect("login:")
-  -- expect(string, closure)
+  - expect(string, closure)
      Example of invoking this closure overload is:
      expect("login:") {
        // the closure code invoked if there is a match
      }
-  -- expect(Match[] mathes)
+  - expect(Match[] mathes)
      Example of invoking this closure overload is:
      expect ([
       _gl("hello\r"){
@@ -48,16 +48,16 @@ the following groovy closures into script bindings:
   Match closure object used for matching characters received into input stream using regular expression pattern.
   This Match closure can be used as an array element of parameter of expect closure.
   The _re closure has two overloads:
-  -- _re(string_re_pattern)
-  -- _re(string_re_pattern,closure)
+  - _re(string_re_pattern)
+  - _re(string_re_pattern,closure)
   The second one has a closure parameter which will be invoked if the regexp matches.
 
 - _gl     : GlobMatchClosure
   Match closure object used for matching characters received into input stream using glob pattern.
   This Match closure can be used as an array element of parameter of expect closure.
   The _re closure has two overloads:
-  -- _gl(string)
-  -- _gl(string,closure)
+  - _gl(string)
+  - _gl(string,closure)
   The second one has a closure parameter which will be invoked if the regexp matches.
 
 - timeout : TimeoutMatchClosure
@@ -100,6 +100,7 @@ Expect4Groovy.createBindings(conn, getBinding(), true)
 
 Example expect4groovy script
 ==================================================
+`<code>`
 import net.itransformers.expect4groovy.Expect4Groovy
 import net.itransformers.expect4groovy.cliconnection.CLIConnection
 import net.itransformers.expect4groovy.cliconnection.impl.EchoCLIConnection
@@ -171,6 +172,7 @@ expect([
 
 // Lets close echo connection
 conn.disconnect()
+`<code>`
 
 Running example
 ===================================================
