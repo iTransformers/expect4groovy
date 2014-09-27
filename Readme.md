@@ -19,12 +19,16 @@ Running
 
 2. Running with expect4groovy.jar
 
-```export CLASSPATH=expect4groovy-1.1.jar:groovy-all-2.1.9.jar:commons-net-3.0.1.jar:jsch-0.1.44-1.jar:log4j-1.2.16.jar:oro-2.0.8.jar:commons-lang3-3.3.1.jar```
+   ```
+   export CLASSPATH=expect4groovy-1.1.jar:groovy-all-2.1.9.jar:\
+                     commons-net-3.0.1.jar:jsch-0.1.44-1.jar:log4j-1.2.16.jar:\
+                     oro-2.0.8.jar:commons-lang3-3.3.1.jar
+   ```
 
-```java groovy.lang.GroovyShell src\test\java\example.groovy```
-or
+   ```java groovy.lang.GroovyShell src\test\java\example.groovy```
+   or
 
-```java groovy.lang.GroovyShell src\test\java\example.groovy DEBUG```
+   ```java groovy.lang.GroovyShell src\test\java\example.groovy DEBUG```
 
 excpect4groovy closures
 =================================================
