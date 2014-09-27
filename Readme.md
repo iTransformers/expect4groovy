@@ -33,13 +33,16 @@ the groovy script's bindings:
   - `expect(string, closure)`
 
      Example of invoking this closure overload is:
-     `expect("login:") {
+     ```
+     expect("login:") {
        // the closure code invoked if there is a match
-     }`
+     }
+     ```
   - `expect(Match[] mathes)`
 
      Example of invoking this closure overload is:
-     `expect ([
+     ```
+     expect ([
       _gl("hello\r"){
           println("Matched hello")
           it.exp_continue()
@@ -48,7 +51,8 @@ the groovy script's bindings:
           println("Matched: "+expectState.getMatch())
           expectState.exp_continue()
       }
-     ])`
+     ])
+     ```
 
 - `_re`     : RegExpMatchClosure
 
@@ -80,15 +84,19 @@ the groovy script's bindings:
   This Match closure can be used as an array element of parameter of expect closure.
 
   For example:
-  `expect ([
+  ```
+  expect ([
      timeout(){
       // some code is executed here if there is timeout
      }
-  ])`
+  ])
+  ```
   or:
-  `expect ([
+  ```
+  expect ([
      timeout(1000L)
-  ])`
+  ])
+  ```
 
 - `eof`     : EofMatchClosure
 
@@ -106,33 +114,34 @@ Registering groovy closures
 The above Groovy closures are registered into script bindings with one of the following overloads
 of createBindings method:
 
-`void Expect4Groovy.createBindings(CLIConnection cliConnection, Binding binding, boolean withLogging);
+```
+void Expect4Groovy.createBindings(CLIConnection cliConnection, Binding binding, boolean withLogging);
 Map<String, Object> Expect4Groovy.createBindings(CLIConnection cliConnection);
-Map<String, Object> Expect4Groovy.createBindings(InputStream is, OutputStream os);`
+Map<String, Object> Expect4Groovy.createBindings(InputStream is, OutputStream os);
+```
 
 Example:
-`CLIConnection conn = new RawSocketCLIConnection()
+```
+CLIConnection conn = new RawSocketCLIConnection()
 conn.connect(["user":"v","password":"123","address":"localhost:23"])
-Expect4Groovy.createBindings(conn, getBinding(), true)`
+Expect4Groovy.createBindings(conn, getBinding(), true)
+```
 
 Example expect4groovy script
 ==================================================
-`
+
+```java
 import net.itransformers.expect4groovy.Expect4Groovy
 import net.itransformers.expect4groovy.cliconnection.CLIConnection
 import net.itransformers.expect4groovy.cliconnection.impl.EchoCLIConnection
 import net.itransformers.expect4java.ExpectContext
-
 CLIConnection conn = new EchoCLIConnection()
 def params = [:] // empty map for echo connection
 conn.connect(params)
-
 Expect4Groovy.createBindings(conn, getBinding(), true)
-`
 expect.setTimeout(1000){
     println "Timeout while expecting"
 }
-
 // simple send to echo connection
 send("echo\n")
 send("test\n")
@@ -144,13 +153,11 @@ expect ("echo\n") {
 }
 // expect hello as it should be send already to the echo connection
 expect("hello\n");
-
 // Example usage of '_re' closure
 send ("echo1234")
 expect (_re("[a-z]+([0-9]+)"){
     println("Captured: "+it.getMatch(1))
 })
-
 // More complicated examples with array of Match closures.
 // Shows also how to use exp_continue of ExpectContext
 send ("echo1234\n")
@@ -169,13 +176,11 @@ expect ([
         println("Captured: ZZZ")
     }
 ])
-
 //Shows how the global timeout closure will be invoked.
 send("hello\n")
 expect("John"){
     println("This text should not appear in console")
 }
-
 //Shows how the local timeout closure will be invoked.
 send("test\n")
 expect([
@@ -186,9 +191,9 @@ expect([
         println("This is a timeout example")
     }
 ])
-
 // Lets close echo connection
 conn.disconnect()
+```
 
 Running example
 ===================================================
