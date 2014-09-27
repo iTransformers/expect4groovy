@@ -1,15 +1,23 @@
-This is the first version of the expect4groovy library.
+Building
+===================================================
+1. To build the expect4groovy.jar only use:
+```mvn package```
 
-Dependencies
-==================================================
-expect4groovy runtime depends on the following other libraries.
+2. To build the expect4groovy-jar-with-dependencies.jar use:
+```mvn assembly:assembly```
 
-- Maven: org.codehaus.groovy:groovy-all:2.1.9
-- Maven: org.apache.commons:commons-net:3.3.1
-- Maven: com.jcraft:jsch:0.1.44-1 (optional for ssh connections)
-- Maven: commons-net:commons-net:3.0.1
-- Maven: oro:oro:2.0.8
-- Maven: log4j:log4j:1.2.16
+Running
+===================================================
+1. Running with expect4groovy-jar-with-dependencies.jar:
+```java -jar target\expect4groovy-1.1-jar-with-dependencies.jar src\test\java\example.groovy```
+or
+```java -jar target\expect4groovy-1.1-jar-with-dependencies.jar src\test\java\example.groovy DEBUG```
+
+2. Running with expect4groovy.jar
+```export CLASSPATH=expect4groovy-1.1.jar:groovy-all-2.1.9.jar:commons-net-3.0.1.jar:jsch-0.1.44-1.jar:log4j-1.2.16.jar:oro-2.0.8.jar:commons-lang3-3.3.1.jar```
+```java groovy.lang.GroovyShell src\test\java\example.groovy```
+or
+```java groovy.lang.GroovyShell src\test\java\example.groovy DEBUG```
 
 excpect4groovy closures
 =================================================
@@ -135,13 +143,26 @@ import net.itransformers.expect4groovy.Expect4Groovy
 import net.itransformers.expect4groovy.cliconnection.CLIConnection
 import net.itransformers.expect4groovy.cliconnection.impl.EchoCLIConnection
 import net.itransformers.expect4java.ExpectContext
+import org.apache.log4j.Level
+import org.apache.log4j.LogManager
+
+if (args.length == 0){
+    LogManager.getRootLogger().setLevel(Level.INFO);
+} else {
+    LogManager.getRootLogger().setLevel(Level.toLevel(args[0]));
+}
+
+
 CLIConnection conn = new EchoCLIConnection()
 def params = [:] // empty map for echo connection
 conn.connect(params)
+
 Expect4Groovy.createBindings(conn, getBinding(), true)
+
 expect.setTimeout(1000){
     println "Timeout while expecting"
 }
+
 // simple send to echo connection
 send("echo\n")
 send("test\n")
@@ -153,11 +174,13 @@ expect ("echo\n") {
 }
 // expect hello as it should be send already to the echo connection
 expect("hello\n");
+
 // Example usage of '_re' closure
 send ("echo1234")
 expect (_re("[a-z]+([0-9]+)"){
     println("Captured: "+it.getMatch(1))
 })
+
 // More complicated examples with array of Match closures.
 // Shows also how to use exp_continue of ExpectContext
 send ("echo1234\n")
@@ -176,11 +199,13 @@ expect ([
         println("Captured: ZZZ")
     }
 ])
+
 //Shows how the global timeout closure will be invoked.
 send("hello\n")
 expect("John"){
     println("This text should not appear in console")
 }
+
 //Shows how the local timeout closure will be invoked.
 send("test\n")
 expect([
@@ -191,17 +216,18 @@ expect([
         println("This is a timeout example")
     }
 ])
+
 // Lets close echo connection
 conn.disconnect()
 ```
 
-Running example
-===================================================
-1. Running the simulator
-`export CLASSPATH=expect4j-1.0.jar:groovy-all-2.1.9.jar:oro-2.0.8.jar:expect4groovy-1.0-SNAPSHOT.jar
-java simulator.TelnetSimulator -f telnet_simulator.groovy`
+Dependencies
+==================================================
+expect4groovy runtime depends on the following other libraries.
 
-2. Running the expect4grovy example
-`export CLASSPATH=expect4j-1.0.jar:expect4groovy-1.0-SNAPSHOT.jar
-groovy expect4groovy_test.groovy`
-
+- Maven: org.codehaus.groovy:groovy-all:2.1.9
+- Maven: org.apache.commons:commons-net:3.3.1
+- Maven: com.jcraft:jsch:0.1.44-1 (optional for ssh connections)
+- Maven: commons-net:commons-net:3.0.1
+- Maven: oro:oro:2.0.8
+- Maven: log4j:log4j:1.2.16
