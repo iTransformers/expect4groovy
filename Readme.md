@@ -232,6 +232,10 @@ expect([
 
 // Lets close echo connection
 conn.disconnect()
+
+// Even the connection is closed the eof will be in the expect buffer
+// so lets expect for eof (end of file).
+expect _eof()
 ```
 
 Dependencies
