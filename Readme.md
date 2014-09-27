@@ -16,24 +16,24 @@ excpect4groovy closures
 This library is registers the following Groovy closures into
 the groovy script's bindings:
 
-- send    : SendClosure
+- `send`    : SendClosure
   The send closure is used to send characters
   Example of invoking this closure is:
-  send("say hello\r")
+  `send("say hello\r")`
 
-- expect  : ExpectClosure
+- `expect`  : ExpectClosure
   The expect closure has several overloads:
-  - expect(string)
+  - `expect(string)`
      Example of invoking this closure overload is:
-     expect("login:")
-  - expect(string, closure)
+     `expect("login:")`
+  - `expect(string, closure)`
      Example of invoking this closure overload is:
-     expect("login:") {
+     `expect("login:") {
        // the closure code invoked if there is a match
-     }
-  - expect(Match[] mathes)
+     }`
+  - `expect(Match[] mathes)`
      Example of invoking this closure overload is:
-     expect ([
+     `expect ([
       _gl("hello\r"){
           println("Matched hello")
           it.exp_continue()
@@ -42,66 +42,65 @@ the groovy script's bindings:
           println("Matched: "+expectState.getMatch())
           expectState.exp_continue()
       }
-     ])
+     ])`
 
-- _re     : RegExpMatchClosure
+- `_re`     : RegExpMatchClosure
   Match closure object used for matching characters received into input stream using regular expression pattern.
   This Match closure can be used as an array element of parameter of expect closure.
   The _re closure has two overloads:
-  - _re(string_re_pattern)
-  - _re(string_re_pattern,closure)
+  - `_re(string_re_pattern)`
+  - `_re(string_re_pattern,closure)`
   The second one has a closure parameter which will be invoked if the regexp matches.
 
-- _gl     : GlobMatchClosure
+- `_gl`     : GlobMatchClosure
   Match closure object used for matching characters received into input stream using glob pattern.
   This Match closure can be used as an array element of parameter of expect closure.
   The _re closure has two overloads:
-  - _gl(string)
-  - _gl(string,closure)
+  - `_gl(string)`
+  - `_gl(string,closure)`
   The second one has a closure parameter which will be invoked if the regexp matches.
 
-- timeout : TimeoutMatchClosure
+- `timeout` : TimeoutMatchClosure
   Match closure object used to handle expect timeouts.
   This Match closure can be used as an array element of parameter of expect closure.
   For example:
-  expect ([
+  `expect ([
      timeout(){
       // some code is executed here if there is timeout
      }
-  ])
+  ])`
   or:
-  expect ([
+  `expect ([
      timeout(1000L)
-  ])
+  ])`
 
-- eof     : EofMatchClosure
+- `eof`     : EofMatchClosure
 
 Inside each match closure the following object is available: net.itransformers.expect4java.ExpectContext.
 This object has the following most important methods:
- - void exp_continue();
- - void exp_continue_reset_timer();
- - String getBuffer();
- - String getMatch(int groupnum);
- - String getMatch();
+ - `void exp_continue();`
+ - `void exp_continue_reset_timer();`
+ - `String getBuffer();`
+ - `String getMatch(int groupnum);`
+ - `String getMatch();`
 
 Registering groovy closures
 ====================================================
 The above Groovy closures are registered into script bindings with one of the following overloads
 of createBindings method:
 
-void Expect4Groovy.createBindings(CLIConnection cliConnection, Binding binding, boolean withLogging);
+`void Expect4Groovy.createBindings(CLIConnection cliConnection, Binding binding, boolean withLogging);
 Map<String, Object> Expect4Groovy.createBindings(CLIConnection cliConnection);
-Map<String, Object> Expect4Groovy.createBindings(InputStream is, OutputStream os);
+Map<String, Object> Expect4Groovy.createBindings(InputStream is, OutputStream os);`
 
 Example:
-CLIConnection conn = new RawSocketCLIConnection()
+`CLIConnection conn = new RawSocketCLIConnection()
 conn.connect(["user":"v","password":"123","address":"localhost:23"])
-Expect4Groovy.createBindings(conn, getBinding(), true)
+Expect4Groovy.createBindings(conn, getBinding(), true)`
 
 Example expect4groovy script
 ==================================================
-`<code>`
-import net.itransformers.expect4groovy.Expect4Groovy
+`import net.itransformers.expect4groovy.Expect4Groovy
 import net.itransformers.expect4groovy.cliconnection.CLIConnection
 import net.itransformers.expect4groovy.cliconnection.impl.EchoCLIConnection
 import net.itransformers.expect4java.ExpectContext
@@ -171,16 +170,15 @@ expect([
 ])
 
 // Lets close echo connection
-conn.disconnect()
-`<code>`
+conn.disconnect()`
 
 Running example
 ===================================================
 1. Running the simulator
-export CLASSPATH=expect4j-1.0.jar:groovy-all-2.1.9.jar:oro-2.0.8.jar:expect4groovy-1.0-SNAPSHOT.jar
-java simulator.TelnetSimulator -f telnet_simulator.groovy
+`export CLASSPATH=expect4j-1.0.jar:groovy-all-2.1.9.jar:oro-2.0.8.jar:expect4groovy-1.0-SNAPSHOT.jar
+java simulator.TelnetSimulator -f telnet_simulator.groovy`
 
 2. Running the expect4grovy example
-export CLASSPATH=expect4j-1.0.jar:expect4groovy-1.0-SNAPSHOT.jar
-groovy expect4groovy_test.groovy
+`export CLASSPATH=expect4j-1.0.jar:expect4groovy-1.0-SNAPSHOT.jar
+groovy expect4groovy_test.groovy`
 
