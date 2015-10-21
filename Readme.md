@@ -164,6 +164,12 @@ conn.connect(["user":"v","password":"123","address":"localhost:23"])
 Expect4Groovy.createBindings(conn, getBinding(), true)
 ```
 
+Another available connections are:
+ - net.itransformers.expect4groovy.cliconnection.impl.SshCLIConnection
+ - net.itransformers.expect4groovy.cliconnection.impl.EchoCLIConnection
+ - net.itransformers.expect4groovy.cliconnection.impl.RawSocketCLIConnection
+ - net.itransformers.expect4groovy.cliconnection.impl.TelnetCLIConnection
+
 Example expect4groovy script
 ==================================================
 
