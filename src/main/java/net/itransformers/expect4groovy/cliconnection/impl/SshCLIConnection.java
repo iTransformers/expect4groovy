@@ -1,9 +1,6 @@
 package net.itransformers.expect4groovy.cliconnection.impl;
 
-import com.jcraft.jsch.ChannelShell;
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
+import com.jcraft.jsch.*;
 import net.itransformers.expect4groovy.cliconnection.CLIConnection;
 
 import java.io.IOException;
@@ -33,21 +30,38 @@ public class SshCLIConnection implements CLIConnection {
             throw new RuntimeException("Missing parameter: username");
         }
         String password1 = (String) params.get("password");
-        if (password1 == null) {
-            throw new RuntimeException("Missing parameter: password");
-        }
-        if (!( params.get("timeout") instanceof Integer)) {
+        if (params.get("timeout") != null && !( params.get("timeout") instanceof Integer)) {
             throw new RuntimeException("invalid format of timeout parameter: "+ address);
         }
         Integer timeout = (Integer)params.get("timeout");
         JSch jsch = new JSch();
-        Hashtable<String,String> config = new Hashtable<String,String>();
-        config.put("StrictHostKeyChecking", "no");
+        Hashtable<String,String> config;
+        if (params.get("config") != null && !(params.get("config") instanceof Hashtable)){
+            throw new RuntimeException("invalid config parameter");
+        } else {
+            config = (Hashtable<String, String>) params.get("config");
+        }
+
+        UserInfo userInfo = null;
+        if (params.get("userInfo") != null && (params.get("userInfo") instanceof UserInfo)){
+            userInfo = (UserInfo) params.get("userInfo");
+        }
+
+
         try {
             session = jsch.getSession(user1, address, port);
-            session.setPassword(password1);
-            session.setConfig(config);
-            session.connect(timeout);
+            if (password1 != null) {
+                session.setPassword(password1);
+            }
+            if (config != null) {
+                session.setConfig(config);
+            }
+            if (userInfo != null) {
+                session.setUserInfo(userInfo);
+            }
+            if (timeout != null) {
+                session.connect(timeout);
+            }
             channel = (ChannelShell) session.openChannel("shell");
             inputStream = channel.getInputStream();
             outputStream = channel.getOutputStream();
