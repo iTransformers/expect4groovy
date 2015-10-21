@@ -15,20 +15,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Expect4Groovy {
+
+    public static Map<String, Object> createObjects(CLIConnection cliConnection, boolean withLogging){
+        return doCreateObjects(cliConnection, withLogging);
+    }
+
     public static void createBindings(CLIConnection cliConnection, Binding binding, boolean withLogging){
+        Map<String, Object> localBindings = doCreateObjects(cliConnection, withLogging);
+        for (String key : localBindings.keySet()) {
+            binding.setProperty(key,localBindings.get(key));
+        }
+    }
+
+    private static Map<String, Object> doCreateObjects(CLIConnection cliConnection, boolean withLogging) {
         InputStream is = cliConnection.inputStream();
         OutputStream os = cliConnection.outputStream();
         if (withLogging){
             is = new TeeInputStream(is, new OutputStreamCLILogger(false));
             os = new TeeOutputStream(os, new OutputStreamCLILogger(true));
         }
-        Map<String, Object> localBindings = createBindings(new InputStreamReader(is), new OutputStreamWriter(os));
-        for (String key : localBindings.keySet()) {
-            binding.setProperty(key,localBindings.get(key));
-        }
+        return createObjects(new InputStreamReader(is), new OutputStreamWriter(os));
     }
 
-    public static Map<String, Object> createBindings(Reader reader, Writer writer){
+    public static Map<String, Object> createObjects(Reader reader, Writer writer){
         Expect4j expect4j;
         try {
             expect4j = new Expect4jImpl(reader, writer);
