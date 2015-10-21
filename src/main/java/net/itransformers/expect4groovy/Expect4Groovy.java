@@ -37,7 +37,11 @@ public class Expect4Groovy {
         return createObjects(new InputStreamReader(is), new OutputStreamWriter(os));
     }
 
-    public static Map<String, Object> createObjects(Reader reader, Writer writer){
+    public static Map<String, Object> createBindings(Reader reader, Writer writer){
+        return createObjects(reader, writer);
+    }
+
+    private static Map<String, Object> createObjects(Reader reader, Writer writer){
         Expect4j expect4j;
         try {
             expect4j = new Expect4jImpl(reader, writer);
