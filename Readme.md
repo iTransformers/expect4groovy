@@ -8,6 +8,22 @@ Building
 
    ```mvn assembly:assembly```
 
+Get a stable release from a Maven Repo
+===================================================
+In your maven POM file add:
+
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+	
+	<dependency>
+	    <groupId>com.github.iTransformers</groupId>
+	    <artifactId>expect4groovy</artifactId>
+	    <version>1.0</version>
+	</dependency>
+	
+	
 Running
 ===================================================
 1. Running with expect4groovy-jar-with-dependencies.jar:
@@ -147,6 +163,12 @@ CLIConnection conn = new RawSocketCLIConnection()
 conn.connect(["user":"v","password":"123","address":"localhost:23"])
 Expect4Groovy.createBindings(conn, getBinding(), true)
 ```
+
+Another available connections are:
+ - net.itransformers.expect4groovy.cliconnection.impl.SshCLIConnection
+ - net.itransformers.expect4groovy.cliconnection.impl.EchoCLIConnection
+ - net.itransformers.expect4groovy.cliconnection.impl.RawSocketCLIConnection
+ - net.itransformers.expect4groovy.cliconnection.impl.TelnetCLIConnection
 
 Example expect4groovy script
 ==================================================
