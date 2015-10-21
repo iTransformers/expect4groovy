@@ -19,6 +19,11 @@ public class SendClosure extends Closure {
     }
 
     @Override
+    public Object call(Object... arguments) {
+        return this.call(arguments[0]);
+    }
+
+    @Override
     public Object call(Object arguments) {
         if (arguments instanceof String) {
             try {
