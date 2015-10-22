@@ -2,7 +2,7 @@ package net.itransformers.expect4groovy
 
 boolean status = false
 
-expect.setTimeout(1000){
+setTimeout(1000){
     status = true
 }
 

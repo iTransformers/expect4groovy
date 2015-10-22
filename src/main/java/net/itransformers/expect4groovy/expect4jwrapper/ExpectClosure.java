@@ -6,7 +6,6 @@ import net.itransformers.expect4java.Expect4j;
 import net.itransformers.expect4java.ExpectContext;
 import net.itransformers.expect4java.matches.GlobMatch;
 import net.itransformers.expect4java.matches.Match;
-import net.itransformers.expect4java.matches.TimeoutMatch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,6 @@ import java.util.List;
 public class ExpectClosure extends groovy.lang.Closure {
 
     private Expect4j expect4j;
-    private TimeoutMatch defaultTimeoutMatch;
 
     public ExpectClosure(Object owner, Object thisObject, Expect4j expect4j) {
         super(owner, thisObject);
@@ -93,18 +91,4 @@ public class ExpectClosure extends groovy.lang.Closure {
         expect4j.close();
     }
 
-    public void setTimeout(TimeoutMatch timeoutMatch){
-        expect4j.setTimeout(timeoutMatch);
-    }
-    public void setTimeout(long timeout, final groovy.lang.Closure closure){
-        setTimeout(new TimeoutMatch((long) timeout, new Closure() {
-            @Override
-            public void run(ExpectContext expectState) throws Exception {
-                closure.call(expectState);
-            }
-        }));
-    }
-    public void setTimeout(int timeout, final groovy.lang.Closure closure){
-        setTimeout((long)timeout,closure);
-    }
 }

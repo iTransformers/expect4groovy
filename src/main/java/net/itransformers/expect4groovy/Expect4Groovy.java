@@ -50,6 +50,7 @@ public class Expect4Groovy {
         }
         Object obj = new Object();
         HashMap<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("setTimeout", new SetTimeoutClosure(obj, expect4j));
         parameters.put("expect", new ExpectClosure(obj, expect4j));
         parameters.put("send", new SendClosure(obj, expect4j));
         parameters.put("_re", new RegExpMatchClosure(obj));
