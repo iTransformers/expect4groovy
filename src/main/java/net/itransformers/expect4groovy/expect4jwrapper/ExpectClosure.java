@@ -83,7 +83,7 @@ public class ExpectClosure extends groovy.lang.Closure {
                 throw new RuntimeException(e);
             }
         } else {
-            return super.call(args);
+            throw new IllegalArgumentException("Expected argument of type String");
         }
     }
 

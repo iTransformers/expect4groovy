@@ -27,7 +27,7 @@ public class EofMatchClosure extends groovy.lang.Closure {
                 }
             });
         } else {
-            return super.call(args);
+            throw new IllegalArgumentException("Expected argument of type String");
         }
     }
 

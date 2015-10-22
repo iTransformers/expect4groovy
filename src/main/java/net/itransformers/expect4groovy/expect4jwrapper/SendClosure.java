@@ -28,12 +28,12 @@ public class SendClosure extends Closure {
         if (arguments instanceof String) {
             try {
                 expect4j.send((String) arguments);
+                return null;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            return null;
         }
-        return super.call(arguments);
+        throw new IllegalArgumentException("Expected argument of type String");
     }
     public Object call(String msg){
         return call((Object)msg);
