@@ -1,6 +1,7 @@
 package net.itransformers.expect4groovy.expect4jwrapper;
 
 
+import groovy.lang.GString;
 import net.itransformers.expect4java.Closure;
 import net.itransformers.expect4java.Expect4j;
 import net.itransformers.expect4java.ExpectContext;
@@ -32,9 +33,9 @@ public class ExpectClosure extends groovy.lang.Closure {
 
     @Override
     public Object call(Object... args) {
-        if ((args.length == 1) && (args[0] instanceof String)) {
+        if ((args.length == 1) && (args[0] instanceof CharSequence)) {
             try {
-                return expect4j.expect(new Match[]{new GlobMatch((String) args[0], null)});
+                return expect4j.expect(new Match[]{new GlobMatch(args[0].toString(), null)});
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -44,10 +45,10 @@ public class ExpectClosure extends groovy.lang.Closure {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-        } else if ((args.length == 2) && (args[0] instanceof String) && (args[1] instanceof groovy.lang.Closure)){
+        } else if ((args.length == 2) && (args[0] instanceof CharSequence) && (args[1] instanceof groovy.lang.Closure)){
             try {
                 final groovy.lang.Closure closure = (groovy.lang.Closure) args[1];
-                return expect4j.expect(new Match[]{new GlobMatch((String) args[0], new Closure() {
+                return expect4j.expect(new Match[]{new GlobMatch(args[0].toString(), new Closure() {
                     @Override
                     public void run(ExpectContext expectState) throws Exception {
                         closure.call(expectState);
@@ -60,9 +61,9 @@ public class ExpectClosure extends groovy.lang.Closure {
             List list = (List) args[0];
             List<Match> matchesList = new ArrayList<Match>(list.size()+1);
             for (Object element : list) {
-                if (element instanceof String) {
+                if (element instanceof CharSequence) {
                     try {
-                        matchesList.add(new GlobMatch((String) element, new Closure() {
+                        matchesList.add(new GlobMatch(element.toString(), new Closure() {
                             @Override
                             public void run(ExpectContext expectState) throws Exception {
                                 // Do nothing

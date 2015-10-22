@@ -25,9 +25,9 @@ public class SendClosure extends Closure {
 
     @Override
     public Object call(Object arguments) {
-        if (arguments instanceof String) {
+        if (arguments instanceof CharSequence) {
             try {
-                expect4j.send((String) arguments);
+                expect4j.send(arguments.toString());
                 return null;
             } catch (IOException e) {
                 throw new RuntimeException(e);

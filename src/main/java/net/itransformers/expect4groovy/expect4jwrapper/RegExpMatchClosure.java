@@ -17,9 +17,9 @@ public class RegExpMatchClosure extends groovy.lang.Closure {
     @Override
     public Object call(final Object... args) {
 
-        if ((args.length == 1) && (args[0] instanceof String)) {
+        if ((args.length == 1) && (args[0] instanceof CharSequence)) {
             try {
-                return new RegExpMatch((String) args[0], new Closure() {
+                return new RegExpMatch(args[0].toString(), new Closure() {
                     @Override
                     public void run(ExpectContext expectState) throws Exception {
 
@@ -28,9 +28,9 @@ public class RegExpMatchClosure extends groovy.lang.Closure {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-        } else if ((args.length == 2) && (args[0] instanceof String) && (args[1] instanceof groovy.lang.Closure)) {
+        } else if ((args.length == 2) && (args[0] instanceof CharSequence) && (args[1] instanceof groovy.lang.Closure)) {
             try {
-                return new RegExpMatch((String) args[0], new Closure() {
+                return new RegExpMatch(args[0].toString(), new Closure() {
                     @Override
                     public void run(ExpectContext expectState) throws Exception {
                         ((groovy.lang.Closure) args[1]).call(expectState);
