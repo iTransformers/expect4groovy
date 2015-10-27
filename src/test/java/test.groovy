@@ -1,6 +1,6 @@
 import net.itransformers.expect4groovy.Expect4Groovy
-import net.itransformers.expect4groovy.cliconnection.CLIConnection
-import net.itransformers.expect4groovy.cliconnection.impl.SshCLIConnection
+import net.itransformers.expect4java.cliconnection.CLIConnection
+import net.itransformers.expect4java.cliconnection.impl.SshCLIConnection
 
 CLIConnection conn = new SshCLIConnection()
 def params = ["username": "vvv", "password": "", "address": "localhost", "port":"22"]

@@ -1,10 +1,10 @@
-package net.itransformers.expect4groovy
+package net.itransformers.expect4groovy.scripts
 
 boolean status = false
 
-setTimeout(1000l){
+setTimeout(_timeout(1000){
     status = true
-}
+})
 
 send "hello\n"
 expect([

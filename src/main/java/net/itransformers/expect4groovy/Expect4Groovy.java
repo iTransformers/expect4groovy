@@ -2,19 +2,62 @@ package net.itransformers.expect4groovy;
 
 
 import groovy.lang.Binding;
-import net.itransformers.expect4groovy.cliconnection.CLIConnection;
-import net.itransformers.expect4groovy.cliconnection.utils.OutputStreamCLILogger;
-import net.itransformers.expect4groovy.cliconnection.utils.TeeInputStream;
-import net.itransformers.expect4groovy.cliconnection.utils.TeeOutputStream;
+import groovy.lang.Closure;
+import groovy.lang.MetaClass;
+import groovy.lang.MetaMethod;
+import net.itransformers.expect4java.cliconnection.CLIConnection;
+import net.itransformers.expect4java.cliconnection.utils.OutputStreamCLILogger;
+import net.itransformers.expect4java.cliconnection.utils.TeeInputStream;
+import net.itransformers.expect4java.cliconnection.utils.TeeOutputStream;
 import net.itransformers.expect4groovy.expect4jwrapper.*;
 import net.itransformers.expect4java.Expect4j;
 import net.itransformers.expect4java.impl.Expect4jImpl;
+import org.codehaus.groovy.reflection.CachedClass;
 
 import java.io.*;
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Expect4Groovy {
+
+    public static Map<String, Object> createObjects(CLIConnection cliConnection, boolean withLogging, MetaClass clazz){
+        final Map<String, Object> expClosures = doCreateObjects(cliConnection, withLogging);
+        clazz.getMetaMethods().add(new MetaMethod() {
+            @Override
+            public int getModifiers() {
+                return Modifier.PUBLIC;
+            }
+
+            @Override
+            public String getName() {
+                return "methodMissing";
+            }
+
+            @Override
+            public Class getReturnType() {
+                return Object.class;
+            }
+
+            @Override
+            public CachedClass getDeclaringClass() {
+                return null;
+            }
+
+            @Override
+            public Object invoke(Object o, Object[] objects) {
+                if (objects.length == 0) {
+                    throw new IllegalArgumentException("Missing name parameter");
+                }
+                String name = (String) objects[0];
+                Object[] args = new Object[objects.length-1];
+                System.arraycopy(objects,1,args,0,args.length);
+                Closure closure = (Closure) expClosures.get(name);
+                return closure.call(args);
+            }
+        });
+        return expClosures;
+    }
 
     public static Map<String, Object> createObjects(CLIConnection cliConnection, boolean withLogging){
         return doCreateObjects(cliConnection, withLogging);

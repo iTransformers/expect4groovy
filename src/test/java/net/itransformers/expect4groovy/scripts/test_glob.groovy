@@ -1,4 +1,4 @@
-package net.itransformers.expect4groovy
+package net.itransformers.expect4groovy.scripts
 
 boolean status = false
 send "hello\n"

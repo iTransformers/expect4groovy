@@ -4,11 +4,11 @@ import groovy.lang.Binding;
 import groovy.util.GroovyScriptEngine;
 import groovy.util.ResourceException;
 import groovy.util.ScriptException;
-import net.itransformers.expect4groovy.cliconnection.CLIConnection;
-import net.itransformers.expect4groovy.cliconnection.impl.EchoCLIConnection;
-import net.itransformers.expect4groovy.cliconnection.impl.RawSocketCLIConnection;
-import net.itransformers.expect4groovy.cliconnection.impl.SshCLIConnection;
-import net.itransformers.expect4groovy.cliconnection.impl.TelnetCLIConnection;
+import net.itransformers.expect4java.cliconnection.CLIConnection;
+import net.itransformers.expect4java.cliconnection.impl.EchoCLIConnection;
+import net.itransformers.expect4java.cliconnection.impl.RawSocketCLIConnection;
+import net.itransformers.expect4java.cliconnection.impl.SshCLIConnection;
+import net.itransformers.expect4java.cliconnection.impl.TelnetCLIConnection;
 import org.apache.log4j.Logger;
 
 import java.io.File;

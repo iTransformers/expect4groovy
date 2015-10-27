@@ -1,6 +1,6 @@
 import net.itransformers.expect4groovy.Expect4Groovy
-import net.itransformers.expect4groovy.cliconnection.CLIConnection
-import net.itransformers.expect4groovy.cliconnection.impl.EchoCLIConnection
+import net.itransformers.expect4java.cliconnection.CLIConnection
+import net.itransformers.expect4java.cliconnection.impl.EchoCLIConnection
 import net.itransformers.expect4java.ExpectContext
 import org.apache.log4j.Level
 import org.apache.log4j.LogManager

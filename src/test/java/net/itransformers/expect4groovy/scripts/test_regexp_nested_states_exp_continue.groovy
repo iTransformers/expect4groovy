@@ -1,4 +1,4 @@
-package net.itransformers.expect4groovy
+package net.itransformers.expect4groovy.scripts
 
 import net.itransformers.expect4java.ExpectContext
 
@@ -16,6 +16,7 @@ expect([
                 println ("Hello2 " + context1.getMatch(1))
                 match2 = true
             }])
+        context.exp_continue()
     },
     _re("hello3 ([^\n]*)\n") {  ExpectContext context ->
         println ("Hello3 " + context.getMatch(1))
@@ -23,4 +24,4 @@ expect([
     },
 ])
 
-return match1 && match2 && !match3
+return match1 && match2 && match3

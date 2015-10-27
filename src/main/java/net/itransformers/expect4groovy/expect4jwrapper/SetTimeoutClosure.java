@@ -4,12 +4,7 @@ package net.itransformers.expect4groovy.expect4jwrapper;
 import net.itransformers.expect4java.Closure;
 import net.itransformers.expect4java.Expect4j;
 import net.itransformers.expect4java.ExpectContext;
-import net.itransformers.expect4java.matches.GlobMatch;
-import net.itransformers.expect4java.matches.Match;
 import net.itransformers.expect4java.matches.TimeoutMatch;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SetTimeoutClosure extends groovy.lang.Closure {
 

@@ -1,7 +1,6 @@
 package net.itransformers.expect4groovy.expect4jwrapper;
 
 
-import groovy.lang.GString;
 import net.itransformers.expect4java.Closure;
 import net.itransformers.expect4java.Expect4j;
 import net.itransformers.expect4java.ExpectContext;

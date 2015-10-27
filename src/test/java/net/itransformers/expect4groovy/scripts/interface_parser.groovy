@@ -1,9 +1,9 @@
-package net.itransformers.expect4groovy
+package net.itransformers.expect4groovy.scripts
 
 import net.itransformers.expect4java.ExpectContext
 boolean status = false;
 
-String cmdResponse = new File("src/test/java/net/itransformers/expect4groovy","interface_command.txt").text;
+String cmdResponse = new File("src/test/java/net/itransformers/expect4groovy/scripts","interface_command.txt").text;
 send(cmdResponse)
 
 setTimeout(_timeout(100){

@@ -9,7 +9,8 @@ import java.util.logging.SimpleFormatter
 import org.testng.Assert
 
 class TestExpect4Groovy {
-    String path="src/test/java/net/itransformers/expect4groovy"
+
+    String path="src/test/java/net/itransformers/expect4groovy/scripts"
 
     @DataProvider(name = "providerSingle")
     public Object[][] provideAll() throws Exception {
@@ -22,7 +23,7 @@ class TestExpect4Groovy {
         String[] files = new File(path).list(new FilenameFilter(){
             @Override
             boolean accept(File dir, String name) {
-                return name.endsWith(".groovy") && !name.equals("TestExpect4Groovy.groovy")
+                return name.endsWith(".groovy")
             }
         })
         Object[][] result = new Object[files.size()][1]

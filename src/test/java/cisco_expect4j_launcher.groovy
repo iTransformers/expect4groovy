@@ -1,8 +1,8 @@
 import net.itransformers.expect4groovy.Expect4Groovy
-import net.itransformers.expect4groovy.cliconnection.CLIConnection
-import net.itransformers.expect4groovy.cliconnection.impl.TelnetCLIConnection
-import net.itransformers.expect4groovy.cliconnection.impl.RawSocketCLIConnection
-import net.itransformers.expect4groovy.cliconnection.impl.SshCLIConnection
+import net.itransformers.expect4java.cliconnection.CLIConnection
+import net.itransformers.expect4java.cliconnection.impl.TelnetCLIConnection
+import net.itransformers.expect4java.cliconnection.impl.RawSocketCLIConnection
+import net.itransformers.expect4java.cliconnection.impl.SshCLIConnection
 
 params = ["protocol":"ssh", "username": "lab", "password": "lab123", "enablePass": "pass123", "address": "172.16.35.5","port":"22", "command": "no ip domain-lookup"]
 
