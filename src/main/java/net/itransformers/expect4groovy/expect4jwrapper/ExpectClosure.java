@@ -24,7 +24,6 @@ import net.itransformers.expect4java.Expect4j;
 import net.itransformers.expect4java.ExpectContext;
 import net.itransformers.expect4java.matches.GlobMatch;
 import net.itransformers.expect4java.matches.Match;
-import net.itransformers.expect4java.matches.TimeoutMatch;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,7 +32,6 @@ import java.util.List;
 public class ExpectClosure extends groovy.lang.Closure {
 
     private Expect4j expect4j;
-    private TimeoutMatch defaultTimeoutMatch;
 
     public ExpectClosure(Object owner, Object thisObject, Expect4j expect4j) {
         super(owner, thisObject);
@@ -53,9 +51,9 @@ public class ExpectClosure extends groovy.lang.Closure {
 
     @Override
     public Object call(Object... args) {
-        if ((args.length == 1) && (args[0] instanceof String)) {
+        if ((args.length == 1) && (args[0] instanceof CharSequence)) {
             try {
-                return expect4j.expect(new Match[]{new GlobMatch((String) args[0], null)});
+                return expect4j.expect(new Match[]{new GlobMatch(args[0].toString(), null)});
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -65,10 +63,10 @@ public class ExpectClosure extends groovy.lang.Closure {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-        } else if ((args.length == 2) && (args[0] instanceof String) && (args[1] instanceof groovy.lang.Closure)){
+        } else if ((args.length == 2) && (args[0] instanceof CharSequence) && (args[1] instanceof groovy.lang.Closure)){
             try {
                 final groovy.lang.Closure closure = (groovy.lang.Closure) args[1];
-                return expect4j.expect(new Match[]{new GlobMatch((String) args[0], new Closure() {
+                return expect4j.expect(new Match[]{new GlobMatch(args[0].toString(), new Closure() {
                     @Override
                     public void run(ExpectContext expectState) throws Exception {
                         closure.call(expectState);
@@ -81,9 +79,9 @@ public class ExpectClosure extends groovy.lang.Closure {
             List list = (List) args[0];
             List<Match> matchesList = new ArrayList<Match>(list.size()+1);
             for (Object element : list) {
-                if (element instanceof String) {
+                if (element instanceof CharSequence) {
                     try {
-                        matchesList.add(new GlobMatch((String) element, new Closure() {
+                        matchesList.add(new GlobMatch(element.toString(), new Closure() {
                             @Override
                             public void run(ExpectContext expectState) throws Exception {
                                 // Do nothing
@@ -104,7 +102,7 @@ public class ExpectClosure extends groovy.lang.Closure {
                 throw new RuntimeException(e);
             }
         } else {
-            return super.call(args);
+            throw new IllegalArgumentException("Expected argument of type String");
         }
     }
 
@@ -112,18 +110,4 @@ public class ExpectClosure extends groovy.lang.Closure {
         expect4j.close();
     }
 
-    public void setTimeout(TimeoutMatch timeoutMatch){
-        expect4j.setTimeout(timeoutMatch);
-    }
-    public void setTimeout(long timeout, final groovy.lang.Closure closure){
-        setTimeout(new TimeoutMatch((long) timeout, new Closure() {
-            @Override
-            public void run(ExpectContext expectState) throws Exception {
-                closure.call(expectState);
-            }
-        }));
-    }
-    public void setTimeout(int timeout, final groovy.lang.Closure closure){
-        setTimeout((long)timeout,closure);
-    }
 }

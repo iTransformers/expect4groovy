@@ -43,8 +43,10 @@ public class TimeoutMatchClosure extends groovy.lang.Closure {
                     ((groovy.lang.Closure)args[0]).call(expectState);
                 }
             });
-        } else if ((args.length == 1)  && (args[0] instanceof Integer || args[0] instanceof Long )) {
+        } else if ((args.length == 1)  && (args[0] instanceof Long )) {
             return new TimeoutMatch((Long)args[0]);
+        } else if ((args.length == 1)  && (args[0] instanceof Integer)) {
+            return new TimeoutMatch((long) (Integer) args[0]);
         } else if ((args.length == 2)  && (args[0] instanceof Integer || args[0] instanceof Long )
                 && (args[1] instanceof groovy.lang.Closure)){
             Long timeout;
@@ -60,7 +62,7 @@ public class TimeoutMatchClosure extends groovy.lang.Closure {
                 }
             });
         } else {
-            return super.call(args);
+            throw new IllegalArgumentException("Expected argument of type String");
         }
     }
 

@@ -37,16 +37,21 @@ public class SendClosure extends Closure {
     }
 
     @Override
+    public Object call(Object... arguments) {
+        return this.call(arguments[0]);
+    }
+
+    @Override
     public Object call(Object arguments) {
-        if (arguments instanceof String) {
+        if (arguments instanceof CharSequence) {
             try {
-                expect4j.send((String) arguments);
+                expect4j.send(arguments.toString());
+                return null;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            return null;
         }
-        return super.call(arguments);
+        throw new IllegalArgumentException("Expected argument of type String");
     }
     public Object call(String msg){
         return call((Object)msg);
