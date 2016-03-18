@@ -2,4 +2,7 @@
 .DS_Store
 out/
 target/
-.log
+*.log
+expect4groovy.iml
+*.ipr
+*.iws
