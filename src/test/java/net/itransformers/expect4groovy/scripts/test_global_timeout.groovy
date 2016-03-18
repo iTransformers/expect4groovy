@@ -16,13 +16,13 @@
  * limitations under the License.
  */
 
-package net.itransformers.expect4groovy
+package net.itransformers.expect4groovy.scripts
 
 boolean status = false
 
-expect.setTimeout(_timeout(1000){
+expect.setTimeout(1000){
     status = true
-})
+}
 
 send "hello\n"
 expect([

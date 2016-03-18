@@ -24,6 +24,7 @@ import net.itransformers.expect4java.Expect4j;
 import net.itransformers.expect4java.ExpectContext;
 import net.itransformers.expect4java.matches.GlobMatch;
 import net.itransformers.expect4java.matches.Match;
+import net.itransformers.expect4java.matches.TimeoutMatch;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -104,6 +105,21 @@ public class ExpectClosure extends groovy.lang.Closure {
         } else {
             throw new IllegalArgumentException("Expected argument of type String");
         }
+    }
+
+    public void setTimeout(TimeoutMatch timeoutMatch){
+        expect4j.setTimeout(timeoutMatch);
+    }
+    public void setTimeout(long timeout, final groovy.lang.Closure closure){
+        setTimeout(new TimeoutMatch((long) timeout, new Closure() {
+            @Override
+            public void run(ExpectContext expectState) throws Exception {
+                closure.call(expectState);
+            }
+        }));
+    }
+    public void setTimeout(int timeout, final groovy.lang.Closure closure){
+        setTimeout((long)timeout,closure);
     }
 
     public void close() throws IOException {
