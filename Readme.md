@@ -7,6 +7,9 @@ Building
 2. To build the expect4groovy-jar-with-dependencies.jar use:
 
    ```mvn assembly:assembly```
+   
+3. Current build status 
+[ ![Build Status for iTransformers/expect4groovy](https://codeship.com/projects/0166ad70-c00f-0133-7785-7ec3d9f82d5d/status?branch=master)](https://codeship.com/projects/137203)
 
 Get a stable release from a Maven Repo
 ===================================================
