@@ -266,7 +266,6 @@ expect4groovy runtime depends on the following other libraries.
 - Maven: commons-net:commons-net:3.0.1
 - Maven: oro:oro:2.0.8
 - Maven: log4j:log4j:1.2.16
-- 
 
 
 Q&A / Issue tracker 
