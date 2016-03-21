@@ -12,15 +12,11 @@ Get a stable release from a Maven Repo
 ===================================================
 In your maven POM file add:
 
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
 	
 	<dependency>
-	    <groupId>com.github.iTransformers</groupId>
+	    <groupId>net.itransformers</groupId>
 	    <artifactId>expect4groovy</artifactId>
-	    <version>1.0</version>
+	    <version>1.0.0</version>
 	</dependency>
 	
 	
@@ -270,3 +266,13 @@ expect4groovy runtime depends on the following other libraries.
 - Maven: commons-net:commons-net:3.0.1
 - Maven: oro:oro:2.0.8
 - Maven: log4j:log4j:1.2.16
+- 
+
+
+Q&A / Issue tracker 
+==================================================
+
+
+![Community forum](http://forum.itransformers.net/fluxbb/viewforum.php?id=25) 
+
+![Issue tracker](https://github.com/iTransformers/ddos-servlet-filter/issues)
