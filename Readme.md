@@ -272,6 +272,6 @@ Q&A / Issue tracker
 ==================================================
 
 
-![Community forum](http://forum.itransformers.net/fluxbb/viewforum.php?id=25) 
+![Community forum](http://forum.itransformers.net/fluxbb/viewforum.php?id=22) 
 
-![Issue tracker](https://github.com/iTransformers/ddos-servlet-filter/issues)
+![Issue tracker](https://github.com/iTransformers/expect4groovy/issues)
