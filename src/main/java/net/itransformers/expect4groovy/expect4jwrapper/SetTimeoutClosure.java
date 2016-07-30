@@ -5,7 +5,7 @@ import net.itransformers.expect4java.Closure;
 import net.itransformers.expect4java.Expect4j;
 import net.itransformers.expect4java.ExpectContext;
 import net.itransformers.expect4java.matches.TimeoutMatch;
-
+@Deprecated
 public class SetTimeoutClosure extends groovy.lang.Closure {
 
     private Expect4j expect4j;
