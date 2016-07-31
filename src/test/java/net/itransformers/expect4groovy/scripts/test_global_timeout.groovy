@@ -20,9 +20,6 @@ package net.itransformers.expect4groovy.scripts
 
 boolean status = false
 
-expect.setTimeout(1000){
-    status = true
-}
 
 send "hello\n"
 expect([

@@ -32,6 +32,7 @@ import org.apache.log4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -43,13 +44,22 @@ public class Expect4GroovyScriptLauncher {
 
     public static void main(String[] args) throws IOException, ResourceException, ScriptException {
 
+        Hashtable<String, String> config = new Hashtable<String, String>();
+        config.put("StrictHostKeyChecking", "no");
+
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("protocol", "telnet");
-        params.put("username", "lab");
-        params.put("password", "lab123");
-        params.put("enable-password", "lab123");
-        params.put("address", "193.19.172.133");
-        params.put("port", 11123);
+        params.put("protocol", "ssh");
+        params.put("username", "nbu");
+        params.put("password", "nbu321!");
+        params.put("enable-password", "nbu321!");
+        params.put("address", "193.19.175.129");
+        params.put("port", 22);
+        params.put("timeout",30000);
+        params.put("config",config);
+        params.put("LOGGING_LEVEL","DEBUG");
+        params.put("prompt",">");
+        params.put("defaultTerminator","\r");
+        params.put("powerUserPrompt","#");
 
         Expect4GroovyScriptLauncher launcher = new Expect4GroovyScriptLauncher();
 
@@ -61,12 +71,37 @@ public class Expect4GroovyScriptLauncher {
         } else {
             Map<String, Object> cmdParams = new LinkedHashMap<String, Object>();
             cmdParams.put("evalScript", null);
-            cmdParams.put("command","ip route 10.200.1.0 255.255.255.0 192.0.2.1");
+            cmdParams.put("configCommand","ip route 10.200.1.0 255.255.255.0 192.0.2.1");
+            cmdParams.put("mode", loginResult.get("mode"));
+            cmdParams.put("hostname", loginResult.get("hostname"));
+
+
             Map<String, Object> result = launcher.sendCommand("cisco_sendConfigCommand.groovy",cmdParams);
-            params.put("configMode", result.get("configMode"));
-            cmdParams.put("command","ip route 10.200.1.0 255.255.255.0 192.0.2.1");
-            launcher.sendCommand("cisco_sendConfigCommand.groovy", cmdParams);
-            launcher.close("cisco_logout.groovy");
+            if(result.get("status").equals(1)){
+                System.out.println(result.get("data"));
+            }else{
+                System.out.println(result.get("data"));
+            }
+            cmdParams.put("mode", result.get("mode"));
+            cmdParams.put("hostname",loginResult.get("hostname"));
+
+            String configTemplate = "interface loopback 101\n" +
+                    "ip address 127.0.0.101 255.255.255.255\n" +
+                    "description useless loopback\n"+
+                    "no shutdown\n";
+
+
+            cmdParams.put("configTemplate",configTemplate);
+
+            result = launcher.sendCommand("cisco_sendConfigTemplate.groovy",cmdParams);
+            if(result.get("status").equals(1)){
+                System.out.println(result.get("data"));
+            }else{
+                System.out.println("Config Template Failure: "+result.get("data"));
+            }
+
+            result = launcher.close("cisco_logout.groovy", params);
+             System.out.println(result.get("data"));
         }
     }
 
@@ -116,8 +151,11 @@ public class Expect4GroovyScriptLauncher {
         return result;
     }
 
-    public Map<String, Object> close(String scriptName) throws ResourceException, ScriptException {
+    public Map<String, Object> close(String scriptName,Map<String, Object> params) throws ResourceException, ScriptException {
         try {
+            Map<String, Object> allParams = (Map<String, Object>) binding.getProperty("params");
+
+            binding.setProperty("params", allParams);
             Map<String, Object> result = (Map<String, Object>) gse.run(scriptName, binding);
             return result;
         } finally {

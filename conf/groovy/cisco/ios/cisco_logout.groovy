@@ -29,20 +29,49 @@ println (System.currentTimeMillis())
 prompt = ">"
 powerUserPrompt = "#"
 defaultTerminator = "\r"
-logedIn = "false"
-logedInPowerMode = "false"
-logedInConfigMode = false
-hostname = ""
-status = ["success": 1, "failure": 2]
 
-exit()
+hostname = params.get("hostname");
+status = ["success": 1, "failure": 2]
+modes = ["notLogedIn": 0, "logedIn": 1, "logedInPrivilege15Mode": 2, "logedInConfigMode": 3]
+mode = params["mode"];
+
+
+
+def result;
+
+result = exit();
+
+return  result;
 
 def exit(){
-    if (params["configMode"] == true) {
-        send(""+(char)0x1A) // ^z
-        expect(params["hostname"]+powerUserPrompt)
-        send("exit"+defaultTerminator)
-        expect _eof()
+    returnStatus = status["failure"];
+    def result;
+
+    if (mode == modes["logedInConfigMode"]) {
+        send "end" + defaultTerminator;
+
+        expect ([
+
+                _re(powerUserPrompt) {
+                    send "exit";
+                    result = ["status": status["success"], "data": "Logout Success!"]
+                },
+                _re("end" + "\r"){
+                    result = ["status": status["success"], "data": "Logout Success!"]
+                    send "exit";
+                    it.exp_continue();
+
+                },
+
+            ]);
+
+
+
+
+    } else {
+        send "exit";
+        result = ["status": status["success"], "data": "Logout Success!"]
+
     }
-    return ["status": 1, "data": "Logout Success!"]
+    return  result;
 }

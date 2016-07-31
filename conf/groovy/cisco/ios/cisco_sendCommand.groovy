@@ -25,15 +25,19 @@
  */
 
 
-prompt = ">"
-powerUserPrompt = "#"
-defaultTerminator = "\r"
-logedIn = "false"
-logedInPowerMode = "false"
-logedInConfigMode = false
-configPrompt = null;
-hostname = ""
+
 status = ["success": 1, "failure": 2]
+modes = ["notLogedIn": 0, "logedIn": 1, "logedInPrivilege15Mode": 2, "logedInConfigMode": 3]
+mode = params["mode"];
+
+
+prompt = params.get("prompt");
+powerUserPrompt = params.get("powerUserPrompt");
+defaultTerminator = params.get("defaultTerminator");
+
+hostname = params["hostname"];
+
+
 
 def result = sendCommand()
 

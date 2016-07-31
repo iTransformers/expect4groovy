@@ -39,13 +39,13 @@ hostname = params.get("hostname");
 
 def result;
 
-if (params.get("configCommand")) {
+if (params.get("configTemplate")){
 
     configModeResult = setConfigMode();
 
     if (configModeResult.get("status") != status["success"]) {
 
-        result = sendConfigCommand(params["configCommand"]);
+        result = applyConfigTemplate(params["configTemplate"]);
     } else {
 
         result = configModeResult;
@@ -158,6 +158,7 @@ def applyConfigTemplate(template) {
             } else {
                 println("error executing command: " + configCommand + "!!!")
                 result = commandResult.get("data");
+                break;
 
             }
         }
@@ -165,79 +166,9 @@ def applyConfigTemplate(template) {
 
     }
 
-    return ["status": returnStatus, "data": result]
+    return ["status": returnStatus, "data": result,"hostname":hostname];
 }
 
 
 
 
-
-
-
-
-
-//def result = sendCommand()
-//
-//return result
-//
-//def sendCommand() {
-//    def returnFlag = 2
-//    def result = null
-//    if (params["configMode"] == true) {
-//        String command = params["command"]
-//        send(command + defaultTerminator)
-//        expect(command + defaultTerminator){
-//            println("command sent")
-//            commandResult = it.getBuffer()
-//
-//        }
-//        expect([
-//                _re(params["hostname"]+"\\(config\\)"+powerUserPrompt) {
-//                    println("Command "+command+" successfully executed")
-//                    it.getBuffer()
-//                    returnFlag = status["success"]
-//                }
-//        ]);
-//    } else {
-//        send("conf t" + defaultTerminator)
-//        println(System.currentTimeMillis())
-//        expect([ _re("conf t" + defaultTerminator){
-//        }]);
-//        expect(defaultTerminator){
-////            println("confwwt."+System.currentTimeMillis())
-//        };
-//        expect(params["hostname"]+"(config)"+powerUserPrompt){
-//            println("Entering Config mode."+System.currentTimeMillis())
-//            configMode = true;
-//
-//        }
-//        if(configMode ==true){
-//            String command = params["command"];
-//            send(command + defaultTerminator)
-//            expect(command + defaultTerminator){
-//                println("command sent")
-//                commandResult = it.getBuffer()
-//            };
-//            expect([
-////                    _re(".*"){
-////
-////                    },
-//                    //Ne moga da razbera zashto ne machva dolnia red
-//                    _re(params["hostname"]+"\\(config\\)"+powerUserPrompt) {
-////                    _re(".*"){
-//                        it.getBuffer();
-//                        println("Command "+command+" successfully executed")
-//                        returnFlag = status["success"]
-//                    }
-//            ]);
-//
-//        }else{
-//            println("Can't enter in Config Mode!!!")
-//            returnFlag = false;
-//
-//        }
-//    }
-//    return ["status": returnFlag, "commandResult": commandResult, "configMode": configMode]
-//
-//
-//}

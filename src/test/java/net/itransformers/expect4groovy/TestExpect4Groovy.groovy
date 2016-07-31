@@ -67,6 +67,11 @@ class TestExpect4Groovy {
     public void doTestGlob2() {
         doTest("test_glob2.groovy")
     }
+    @Test void doTestCisco(){
+
+        doTest("test_cisco.groovy")
+
+    }
 
     private void doTest(String script) {
         initLogger();
