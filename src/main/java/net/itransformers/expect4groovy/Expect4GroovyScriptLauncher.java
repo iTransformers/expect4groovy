@@ -42,7 +42,7 @@ public class Expect4GroovyScriptLauncher {
     GroovyScriptEngine gse;
     static Logger logger = Logger.getLogger(Expect4GroovyScriptLauncher.class);
 
-    public static void main(String[] args) throws IOException, ResourceException, ScriptException {
+    public static void main(String[] args) throws IOException, ResourceException, ScriptException,RuntimeException {
 
         Hashtable<String, String> config = new Hashtable<String, String>();
         config.put("StrictHostKeyChecking", "no");
@@ -74,9 +74,14 @@ public class Expect4GroovyScriptLauncher {
             cmdParams.put("configCommand","ip route 10.200.1.0 255.255.255.0 192.0.2.1");
             cmdParams.put("mode", loginResult.get("mode"));
             cmdParams.put("hostname", loginResult.get("hostname"));
+            Map<String, Object> result = null;
+            try {
+               result = launcher.sendCommand("cisco_sendConfigCommand.groovy", cmdParams);
+            }catch (RuntimeException tmc){
 
+                logger.trace("TimeoutMatchClosure"+tmc.getMessage().toString());
 
-            Map<String, Object> result = launcher.sendCommand("cisco_sendConfigCommand.groovy",cmdParams);
+            }
             if(result.get("status").equals(1)){
                 System.out.println(result.get("data"));
             }else{

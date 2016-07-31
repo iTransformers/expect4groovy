@@ -89,6 +89,8 @@ def sendConfigCommand(commandLine) {
                     result = it.getBuffer();
                     if (returnStatus1==status["success"]){
                         returnStatus = status["success"];
+                    } else{
+                        result = commandResult;
                     }
 
                 }

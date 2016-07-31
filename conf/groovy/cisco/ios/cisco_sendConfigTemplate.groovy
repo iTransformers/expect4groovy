@@ -86,9 +86,12 @@ def sendConfigCommand(commandLine) {
 
                 },
                 _re(powerUserPrompt + "\$") {
-                    result = it.getBuffer();
+                    result = commandResult+it.getBuffer();
                     if (returnStatus1==status["success"]){
                         returnStatus = status["success"];
+                    }else{
+                        result = commandResult;
+
                     }
 
                 }
