@@ -22,6 +22,7 @@ boolean status = false
 
 
 send "hello\n"
+try{
 expect([
         _gl("hello\n") {
             println "Hello World!"
@@ -30,4 +31,8 @@ expect([
         }
 
 ])
+    //TODO stop trowing runtime timeout exceptions
+}catch (RuntimeException ex){
+    status = true;
+}
 return status

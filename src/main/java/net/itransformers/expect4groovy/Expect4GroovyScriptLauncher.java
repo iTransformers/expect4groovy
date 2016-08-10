@@ -23,17 +23,10 @@ import groovy.util.GroovyScriptEngine;
 import groovy.util.ResourceException;
 import groovy.util.ScriptException;
 import net.itransformers.expect4java.cliconnection.CLIConnection;
-import net.itransformers.expect4java.cliconnection.impl.EchoCLIConnection;
-import net.itransformers.expect4java.cliconnection.impl.RawSocketCLIConnection;
-import net.itransformers.expect4java.cliconnection.impl.SshCLIConnection;
-import net.itransformers.expect4java.cliconnection.impl.TelnetCLIConnection;
+import net.itransformers.expect4java.cliconnection.impl.*;
 import org.apache.log4j.Logger;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Expect4GroovyScriptLauncher {
@@ -42,77 +35,13 @@ public class Expect4GroovyScriptLauncher {
     GroovyScriptEngine gse;
     static Logger logger = Logger.getLogger(Expect4GroovyScriptLauncher.class);
 
-    public static void main(String[] args) throws IOException, ResourceException, ScriptException,RuntimeException {
-
-        Hashtable<String, String> config = new Hashtable<String, String>();
-        config.put("StrictHostKeyChecking", "no");
-
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("protocol", "ssh");
-        params.put("username", "nbu");
-        params.put("password", "nbu321!");
-        params.put("enable-password", "nbu321!");
-        params.put("address", "193.19.175.129");
-        params.put("port", 22);
-        params.put("timeout",30000);
-        params.put("config",config);
-        params.put("LOGGING_LEVEL","DEBUG");
-        params.put("prompt",">");
-        params.put("defaultTerminator","\r");
-        params.put("powerUserPrompt","#");
-
-        Expect4GroovyScriptLauncher launcher = new Expect4GroovyScriptLauncher();
-
-        Map<String, Object> loginResult = launcher.open(new String[]{"conf/groovy/cisco/ios" + File.separator}, "cisco_login.groovy", params);
-
-
-        if (loginResult.get("status").equals(2)) {
-            logger.debug(loginResult);
-        } else {
-            Map<String, Object> cmdParams = new LinkedHashMap<String, Object>();
-            cmdParams.put("evalScript", null);
-            cmdParams.put("configCommand","ip route 10.200.1.0 255.255.255.0 192.0.2.1");
-            cmdParams.put("mode", loginResult.get("mode"));
-            cmdParams.put("hostname", loginResult.get("hostname"));
-            Map<String, Object> result = null;
-            try {
-               result = launcher.sendCommand("cisco_sendConfigCommand.groovy", cmdParams);
-            }catch (RuntimeException tmc){
-
-                logger.trace("TimeoutMatchClosure"+tmc.getMessage().toString());
-
-            }
-            if(result.get("status").equals(1)){
-                System.out.println(result.get("data"));
-            }else{
-                System.out.println(result.get("data"));
-            }
-            cmdParams.put("mode", result.get("mode"));
-            cmdParams.put("hostname",loginResult.get("hostname"));
-
-            String configTemplate = "interface loopback 101\n" +
-                    "ip address 127.0.0.101 255.255.255.255\n" +
-                    "description useless loopback\n"+
-                    "no shutdown\n";
-
-
-            cmdParams.put("configTemplate",configTemplate);
-
-            result = launcher.sendCommand("cisco_sendConfigTemplate.groovy",cmdParams);
-            if(result.get("status").equals(1)){
-                System.out.println(result.get("data"));
-            }else{
-                System.out.println("Config Template Failure: "+result.get("data"));
-            }
-
-            result = launcher.close("cisco_logout.groovy", params);
-             System.out.println(result.get("data"));
-        }
-    }
-
 
     public Object launch(String[] roots, String scriptName, Map<String, Object> params) throws IOException, ResourceException, ScriptException {
         CLIConnection conn = createCliConnection(params);
+        return launch(roots, scriptName, params, conn);
+    }
+
+    public Object launch(String[] roots, String scriptName, Map<String, Object> params, CLIConnection conn) throws IOException, ResourceException, ScriptException {
         try {
             conn.connect(params);
             Binding binding = new Binding();
@@ -134,27 +63,31 @@ public class Expect4GroovyScriptLauncher {
 
     }
 
-    public Map<String, Object> open(String[] roots, String scriptName, Map<String, Object> params) throws ResourceException, ScriptException {
-        connection = createCliConnection(params);
-        Map<String, Object> result = null;
-        try {
-            connection.connect(params);
-            binding = new Binding();
-            Expect4Groovy.createBindings(connection, binding, true);
-            binding.setProperty("params", params);
-            gse = new GroovyScriptEngine(roots);
-            result = (Map<String, Object>) gse.run(scriptName, binding);
-            if (result.get("status").equals("1")) {
-                return result;
-            } else {
-                return result;
-            }
-
-        } catch (IOException ioe) {
-            logger.info(ioe);
-        }
-        return result;
-    }
+//    public Map<String, Object> open(String[] roots, String scriptName, Map<String, Object> params) throws ResourceException, ScriptException {
+//        connection = createCliConnection(params);
+//        return open(roots,scriptName,params,connection);
+//    }
+//
+//    public Map<String, Object> open(String[] roots, String scriptName, Map<String, Object> params, CLIConnection connection) throws ResourceException, ScriptException {
+//        Map<String, Object> result = null;
+//        try {
+//            connection.connect(params);
+//            binding = new Binding();
+//            Expect4Groovy.createBindings(connection, binding, true);
+//            binding.setProperty("params", params);
+//            gse = new GroovyScriptEngine(roots);
+//            result = (Map<String, Object>) gse.run(scriptName, binding);
+//            if (result.get("status").equals("1")) {
+//                return result;
+//            } else {
+//                return result;
+//            }
+//
+//        } catch (IOException ioe) {
+//            logger.info(ioe);
+//        }
+//        return result;
+//    }
 
     public Map<String, Object> close(String scriptName,Map<String, Object> params) throws ResourceException, ScriptException {
         try {
