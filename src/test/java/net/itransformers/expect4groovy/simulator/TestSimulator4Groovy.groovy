@@ -27,11 +27,9 @@ class TestSimulator4Groovy {
         roots[0] = path
         def params = ["name": "World"]
 
-        Object result = new Expect4GroovyScriptLauncher().launchWithSimulator(
+        new Expect4GroovyScriptLauncher().launchWithSimulator(
                 roots, "testHelloWorld.groovy", params,
                 "simulator.groovy" ,[:]);
-
-        Assert.assertTrue((Boolean) result, "The script is not executed successful")
     }
 
     private static void initLogger() {

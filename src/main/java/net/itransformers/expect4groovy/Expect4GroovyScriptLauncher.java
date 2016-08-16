@@ -50,28 +50,36 @@ public class Expect4GroovyScriptLauncher {
         params.put("input",simConn.inputStream());
 
         conn.connect(params);
+        simConn.connect(simulatorParams);
+
         Binding binding = new Binding();
         Expect4Groovy.createBindings(conn, binding, true);
         binding.setProperty("params", params);
         GroovyScriptEngine gse = new GroovyScriptEngine(roots);
 
+        Binding simBinding = new Binding();
+        Expect4Groovy.createBindings(simConn, simBinding, true);
+        simBinding.setProperty("params", simulatorParams);
+        GroovyScriptEngine simGse = new GroovyScriptEngine(roots);
+
         (new Thread(() -> {
             try {
-                simConn.connect(simulatorParams);
-                Binding simBinding = new Binding();
-                Expect4Groovy.createBindings(simConn, simBinding, true);
-                binding.setProperty("params", simulatorParams);
-                GroovyScriptEngine simGse = new GroovyScriptEngine(roots);
                 simGse.run(simulatorName, simBinding);
-            } catch (IOException e) {
+            } catch (ResourceException | ScriptException e) {
                 e.printStackTrace();
-            } catch (ResourceException e) {
-                e.printStackTrace();
-            } catch (ScriptException e) {
-                e.printStackTrace();
+            } finally {
+                try {
+                    simConn.disconnect();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         })).start();
-        return gse.run(scriptName, binding);
+        try {
+            return gse.run(scriptName, binding);
+        } finally {
+            conn.disconnect();
+        }
     }
 
     public Object launch(String[] roots, String scriptName, Map<String, Object> params) throws IOException, ResourceException, ScriptException {
