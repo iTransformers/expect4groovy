@@ -27,6 +27,7 @@ import net.itransformers.expect4java.cliconnection.impl.*;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Expect4GroovyScriptLauncher {
@@ -36,12 +37,45 @@ public class Expect4GroovyScriptLauncher {
     static Logger logger = Logger.getLogger(Expect4GroovyScriptLauncher.class);
 
 
-    public Object launch(String[] roots, String scriptName, Map<String, Object> params) throws IOException, ResourceException, ScriptException {
-        CLIConnection conn = createCliConnection(params);
-        return launch(roots, scriptName, params, conn);
+    public Object launchWithSimulator(String[] roots, String scriptName, Map<String, Object> params,
+                                      String simulatorName, Map<String, Object> simulatorParams) throws IOException, ResourceException, ScriptException {
+        CLIConnection conn = new CrossPipedCLIConnection();
+        CLIConnection simConn = new CrossPipedCLIConnection();
+
+        simulatorParams.put("input",conn.inputStream());
+
+        if (params.containsKey("input")) {
+            throw new IllegalArgumentException("input is reserved parameter");
+        }
+        params.put("input",simConn.inputStream());
+
+        conn.connect(params);
+        Binding binding = new Binding();
+        Expect4Groovy.createBindings(conn, binding, true);
+        binding.setProperty("params", params);
+        GroovyScriptEngine gse = new GroovyScriptEngine(roots);
+
+        (new Thread(() -> {
+            try {
+                simConn.connect(simulatorParams);
+                Binding simBinding = new Binding();
+                Expect4Groovy.createBindings(simConn, simBinding, true);
+                binding.setProperty("params", simulatorParams);
+                GroovyScriptEngine simGse = new GroovyScriptEngine(roots);
+                simGse.run(simulatorName, simBinding);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ResourceException e) {
+                e.printStackTrace();
+            } catch (ScriptException e) {
+                e.printStackTrace();
+            }
+        })).start();
+        return gse.run(scriptName, binding);
     }
 
-    public Object launch(String[] roots, String scriptName, Map<String, Object> params, CLIConnection conn) throws IOException, ResourceException, ScriptException {
+    public Object launch(String[] roots, String scriptName, Map<String, Object> params) throws IOException, ResourceException, ScriptException {
+        CLIConnection conn = createCliConnection(params);
         try {
             conn.connect(params);
             Binding binding = new Binding();
@@ -54,66 +88,15 @@ public class Expect4GroovyScriptLauncher {
         }
     }
 
-    public Map<String, Object> sendCommand(String scriptName, Map<String, Object> params) throws ResourceException, ScriptException {
-        Map<String, Object> allParams = (Map<String, Object>) binding.getProperty("params");
-        allParams.putAll(params); //merge params with the one obtained from the other commands
-        binding.setProperty("params", allParams);
-        Map<String, Object> result = (Map<String, Object>) gse.run(scriptName, binding);
-        return result;
-
-    }
-
-//    public Map<String, Object> open(String[] roots, String scriptName, Map<String, Object> params) throws ResourceException, ScriptException {
-//        connection = createCliConnection(params);
-//        return open(roots,scriptName,params,connection);
-//    }
-//
-//    public Map<String, Object> open(String[] roots, String scriptName, Map<String, Object> params, CLIConnection connection) throws ResourceException, ScriptException {
-//        Map<String, Object> result = null;
-//        try {
-//            connection.connect(params);
-//            binding = new Binding();
-//            Expect4Groovy.createBindings(connection, binding, true);
-//            binding.setProperty("params", params);
-//            gse = new GroovyScriptEngine(roots);
-//            result = (Map<String, Object>) gse.run(scriptName, binding);
-//            if (result.get("status").equals("1")) {
-//                return result;
-//            } else {
-//                return result;
-//            }
-//
-//        } catch (IOException ioe) {
-//            logger.info(ioe);
-//        }
-//        return result;
-//    }
-
-    public Map<String, Object> close(String scriptName,Map<String, Object> params) throws ResourceException, ScriptException {
-        try {
-            Map<String, Object> allParams = (Map<String, Object>) binding.getProperty("params");
-
-            binding.setProperty("params", allParams);
-            Map<String, Object> result = (Map<String, Object>) gse.run(scriptName, binding);
-            return result;
-        } finally {
-            try {
-                connection.disconnect();
-            } catch (IOException e) {
-                logger.info(e);
-            }
-        }
-    }
-
     private CLIConnection createCliConnection(Map<String, Object> params) {
-        CLIConnection conn;
+        CLIConnection conn = null;
         if ("telnet".equals(params.get("protocol"))) {
             conn = new TelnetCLIConnection();
         } else if ("raw".equals(params.get("protocol"))) {
             conn = new RawSocketCLIConnection();
         } else if ("echo".equals(params.get("protocol"))) {
             conn = new EchoCLIConnection();
-        } else {
+        } else if ("ssh".equals("protocol")){
             conn = new SshCLIConnection();
         }
         return conn;

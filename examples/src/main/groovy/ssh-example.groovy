@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-import net.itransformers.expect4groovy.Expect4Groovy
+import Expect4Groovy
 import net.itransformers.expect4java.cliconnection.CLIConnection
 import net.itransformers.expect4java.cliconnection.impl.SshCLIConnection
 

@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package simulator;
+package net.itransformers.expect4groovy.simulator;
 
 import groovy.lang.Binding;
 import groovy.util.GroovyScriptEngine;
@@ -33,7 +33,7 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-
+@Deprecated
 public class TelnetSimulator {
 
     public static void main(String[] args) throws IOException, ScriptException, ResourceException {

@@ -24,12 +24,16 @@
 
     <groupId>net.itransformers</groupId>
     <artifactId>expect4groovy</artifactId>
-    <version>1.0.4</version>
+    <packaging>pom</packaging>
+    <version>1.0.5</version>
     <description>This library is an implementation of DSL Expect for Groovy language</description>
     <organization>
         <name>iTransformers Labs</name>
         <url>http://itransformers.net</url>
     </organization>
+    <modules>
+        <module>examples</module>
+    </modules>
     <name>Expect for Groovy library</name>
     <url>https://github.com/iTransformers/expect4groovy</url>
     <issueManagement>
@@ -81,7 +85,7 @@
         <dependency>
             <groupId>net.itransformers</groupId>
             <artifactId>expect4java</artifactId>
-            <version>1.0.4</version>
+            <version>1.0.5</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
@@ -126,20 +130,20 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-gpg-plugin</artifactId>-->
-                <!--<version>1.5</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>sign-artifacts</id>-->
-                        <!--<phase>verify</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>sign</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
