@@ -1,9 +1,17 @@
 package net.itransformers.expect4groovy.simulator.scripts
 
-expect.setTimeout(10000,{
-    println "timeouted"
-})
+import junit.framework.Assert
 
-expect("hello\n")
+expect([
+    _gl("hello\n"),
+    _timeout(1000){
+        Assert.fail("Timeouted")
+    }
+])
 
-expect(params["name"]+"\n");
+expect([
+    _gl(params["name"]+"\n"),
+    _timeout(1000){
+        Assert.fail("Timeouted")
+    }
+])

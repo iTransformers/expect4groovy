@@ -27,7 +27,9 @@ import net.itransformers.expect4java.cliconnection.impl.*;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Expect4GroovyScriptLauncher {
@@ -37,7 +39,7 @@ public class Expect4GroovyScriptLauncher {
     static Logger logger = Logger.getLogger(Expect4GroovyScriptLauncher.class);
 
 
-    public Object launchWithSimulator(String[] roots, String scriptName, Map<String, Object> params,
+    public Object launchWithSimulator(List<String> roots, String scriptName, Map<String, Object> params,
                                       String simulatorName, Map<String, Object> simulatorParams) throws IOException, ResourceException, ScriptException {
         CLIConnection conn = new CrossPipedCLIConnection();
         CLIConnection simConn = new CrossPipedCLIConnection();
@@ -55,12 +57,12 @@ public class Expect4GroovyScriptLauncher {
         Binding binding = new Binding();
         Expect4Groovy.createBindings(conn, binding, true);
         binding.setProperty("params", params);
-        GroovyScriptEngine gse = new GroovyScriptEngine(roots);
+        GroovyScriptEngine gse = new GroovyScriptEngine(roots.toArray(new String[roots.size()]));
 
         Binding simBinding = new Binding();
         Expect4Groovy.createBindings(simConn, simBinding, true);
         simBinding.setProperty("params", simulatorParams);
-        GroovyScriptEngine simGse = new GroovyScriptEngine(roots);
+        GroovyScriptEngine simGse = new GroovyScriptEngine(roots.toArray(new String[roots.size()]));
 
         (new Thread(() -> {
             try {
@@ -82,14 +84,14 @@ public class Expect4GroovyScriptLauncher {
         }
     }
 
-    public Object launch(String[] roots, String scriptName, Map<String, Object> params) throws IOException, ResourceException, ScriptException {
+    public Object launch(List<String> roots, String scriptName, Map<String, Object> params) throws IOException, ResourceException, ScriptException {
         CLIConnection conn = createCliConnection(params);
         try {
             conn.connect(params);
             Binding binding = new Binding();
             Expect4Groovy.createBindings(conn, binding, true);
             binding.setProperty("params", params);
-            GroovyScriptEngine gse = new GroovyScriptEngine(roots);
+            GroovyScriptEngine gse = new GroovyScriptEngine(roots.toArray(new String[roots.size()]));
             return gse.run(scriptName, binding);
         } finally {
             conn.disconnect();

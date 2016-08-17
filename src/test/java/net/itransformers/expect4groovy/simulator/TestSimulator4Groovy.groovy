@@ -17,32 +17,16 @@ import java.util.logging.SimpleFormatter
  */
 class TestSimulator4Groovy {
 
-    String path="src/test/java/net/itransformers/expect4groovy/simulator/scripts"
     @Test
     public void doTestWithSimulator() {
 
-        initLogger();
-
-        String[] roots = new String[1];
-        roots[0] = path
         def params = ["name": "World"]
 
         new Expect4GroovyScriptLauncher().launchWithSimulator(
-                roots, "testHelloWorld.groovy", params,
-                "simulator.groovy" ,[:]);
-    }
-
-    private static void initLogger() {
-        Logger logger = Logger.getLogger("")
-        logger.setLevel(Level.ALL)
-        ConsoleHandler handler = new ConsoleHandler() {
-            {
-                setOutputStream(System.out)
-            }
-        }
-        handler.setLevel(Level.ALL)
-        handler.setFormatter(new SimpleFormatter())
-        logger.addHandler(handler)
+                ["src/test/java/net/itransformers/expect4groovy/simulator/scripts"],
+                "testHelloWorld.groovy", params,
+                "simulator.groovy" ,[:]
+        );
     }
 
 }
